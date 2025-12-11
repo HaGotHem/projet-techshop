@@ -136,7 +136,7 @@
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.3);
   transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
+    transition: width 0.6s, height 0.6s;
   z-index: -1;
 }
 
@@ -444,13 +444,11 @@
   color: #ccc;
 }
 
-/* Texte du témoignage */
 .testimonial-text {
   transition: all 0.3s ease;
   position: relative;
 }
 
-/* Déplacement et mise en évidence du texte au survol */
 .testimonial-card:hover .testimonial-text {
   transform: translateX(5px);
   color: var(--dark-gray);
@@ -470,7 +468,6 @@
   transition: all 0.3s ease;
 }
 
-/* Guillemet fermant décoratif au survol */
 .testimonial-card:hover .testimonial-text::after {
   content: '"';
   position: absolute;
@@ -483,13 +480,11 @@
   transition: all 0.3s ease;
 }
 
-/* Nom de l'auteur du témoignage */
 .testimonial-author {
   transition: all 0.3s ease;
   opacity: 0.7;
 }
 
-/* Mise en évidence de l'auteur au survol */
 .testimonial-card:hover .testimonial-author {
   transform: translateX(10px);
   opacity: 1;
@@ -497,13 +492,7 @@
   font-weight: 600;
 }
 
-/* ============================================
-   MEDIA QUERIES - RESPONSIVE DESIGN
-   ============================================ */
-
-/* Tablettes et écrans moyens (768px et plus) */
 @media (min-width: 768px) {
-  /* Augmentation de la hauteur du hero */
   .hero-section {
     min-height: 600px;
   }
@@ -516,7 +505,6 @@
     min-height: 600px;
   }
 
-  /* Agrandissement des textes */
   .hero-section h1 {
     font-size: 2.5rem;
   }
@@ -525,13 +513,11 @@
     font-size: 1.25rem;
   }
 
-  /* Ajustement du placeholder d'image */
   .hero-image-placeholder {
     padding: 100px 20px;
     margin-top: 0;
   }
 
-  /* Boutons de navigation plus grands */
   .hero-section .carousel-control-prev,
   .hero-section .carousel-control-next {
     width: 50px;
@@ -547,14 +533,11 @@
   }
 }
 
-/* Grands écrans (1200px et plus) */
 @media (min-width: 1200px) {
-  /* Largeur maximale du conteneur */
   .container {
     max-width: 1200px;
   }
 
-  /* Hero encore plus grand sur desktop */
   .hero-section {
     min-height: 650px;
   }
@@ -567,7 +550,6 @@
     min-height: 650px;
   }
 
-  /* Titre principal encore plus grand */
   .hero-section h1 {
     font-size: 3rem;
   }

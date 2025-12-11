@@ -1,18 +1,3 @@
-/* ============================================
-   STYLES GÉNÉRAUX - style_general.css
-   ============================================
-   Styles communs à toutes les pages du site
-   Niveau BTS SIO 1ère Année
-   ============================================ */
-
-/* ============================================
-   VARIABLES CSS (Custom Properties)
-   ============================================
-   Les variables CSS permettent de stocker des valeurs réutilisables
-   Syntaxe : --nom-variable: valeur;
-   Utilisation : var(--nom-variable)
-   Avantage : Modifier une valeur une seule fois pour tout le site
-   ============================================ */
 :root {
   /* ===== COULEURS DE LA CHARTE GRAPHIQUE ===== */
   /* Couleur principale : bleu foncé */
@@ -44,12 +29,7 @@
   --spacing-xl: 32px;
 }
 
-/* ============================================
-   POLICES PERSONNALISÉES (@font-face)
-   ============================================
-   @font-face permet de charger des polices personnalisées
-   qui ne sont pas installées sur l'ordinateur de l'utilisateur
-   ============================================ */
+/* fonts */
 @font-face {
   /* Nom de la police (à utiliser dans font-family) */
   font-family: "Inter";
@@ -65,368 +45,193 @@
   src: url("../fonts/JetBrainsMono-VariableFont_wght.ttf") format("truetype");
 }
 
-/* ============================================
-   RESET CSS & STYLES DE BASE
-   ============================================
-   Reset : Supprime les styles par défaut du navigateur
-   Base : Styles de base pour tout le site
-   ============================================ */
-
-/* ===== RESET UNIVERSEL ===== */
-/* Sélecteur universel * : sélectionne TOUS les éléments */
 * {
-  margin: 0; /* Supprime toutes les marges par défaut */
-  padding: 0; /* Supprime tous les paddings par défaut */
-
-  /* box-sizing: border-box : 
-     La largeur/hauteur inclut le padding et la bordure
-     Exemple : width: 100px avec padding: 10px = 100px total (pas 120px)
-     C'est plus facile pour calculer les dimensions */
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 /* ===== STYLES DU BODY ===== */
 body {
-  /* Police de caractères : Inter en priorité, sinon sans-serif */
   font-family: "Inter", sans-serif;
-
-  /* Couleur du texte : utilise la variable CSS définie plus haut */
   color: var(--dark-gray);
-
-  /* Défilement fluide : quand on clique sur un lien d'ancrage (#section),
-     la page défile en douceur au lieu de sauter directement */
   scroll-behavior: smooth;
-
-  /* Flexbox : système de mise en page flexible */
-  display: flex; /* Active flexbox */
-  flex-direction: column; /* Direction verticale (colonne) */
-
-  /* Hauteur minimale : 100vh = 100% de la hauteur de la fenêtre (viewport height) */
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }
 
 /* ===== STYLE DU MAIN ===== */
 main {
-  /* flex: 1 : prend tout l'espace disponible
-     Cela permet au footer de rester en bas même si le contenu est court */
   flex: 1;
 }
-
-/* ============================================
-   SURCHARGE DES STYLES BOOTSTRAP
-   ============================================
-   On modifie les styles Bootstrap pour utiliser nos couleurs
-   ============================================ */
-
-/* ===== BOUTON PRIMAIRE ===== */
 .btn-primary {
-  /* Couleur de fond : cyan au lieu du bleu Bootstrap par défaut */
   background-color: var(--accent-cyan);
-
-  /* Couleur de la bordure : même couleur que le fond */
   border-color: var(--accent-cyan);
-
-  /* Couleur du texte : blanc */
   color: white;
 }
 
-/* ===== ÉTAT HOVER DU BOUTON ===== */
-/* :hover : pseudo-classe activée quand la souris survole l'élément */
 .btn-primary:hover {
-  /* Couleur plus foncée au survol */
   background-color: #0891b2;
-
-  /* Opacité : rend le bouton légèrement transparent (0.9 = 90%) */
   opacity: 0.9;
-
-  /* Transition : animation fluide de toutes les propriétés
-     durée: 0.3s, type: ease (démarrage et fin lents) */
   transition: all 0.3s ease;
 }
 
-/* ===== COULEUR DE FOND PRIMAIRE ===== */
 .bg-primary {
-  /* !important : force cette valeur, même si Bootstrap a une autre valeur
-     À utiliser avec modération */
   background-color: var(--primary-blue) !important;
 }
 
-/* ===== COULEUR DE TEXTE PRIMAIRE ===== */
 .text-primary {
   color: var(--accent-cyan) !important;
 }
 
-/* ============================================
-   HEADER (EN-TÊTE DU SITE)
-   ============================================ */
+/* header */
 
 .header-site {
-  /* Ombre portée : crée un effet d'élévation
-     Syntaxe : offset-x offset-y blur-radius couleur
-     0 2px 8px = décalage horizontal 0, vertical 2px, flou 8px */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
-  /* Position sticky : reste en haut lors du défilement
-     Comme position: fixed mais ne s'active qu'après avoir scrollé */
   position: sticky;
-  top: 0; /* Reste à 0px du haut */
-
-  /* z-index : ordre d'empilement (plus élevé = au-dessus)
-     1000 = au-dessus de la plupart des éléments */
+  top: 0;
   z-index: 1000;
-
-  /* Fond bleu */
   background-color: var(--primary-blue) !important;
 }
 
 /* ===== LOGO DU SITE ===== */
 .navbar-brand {
-  /* font-weight: 700 = gras (équivalent à bold) */
   font-weight: 700;
-
-  /* Taille de police : 1.5rem = 1.5 × taille de base (généralement 16px) = 24px */
   font-size: 1.5rem;
-
   color: white !important;
 }
 
 /* ===== LIENS DE NAVIGATION ===== */
 .navbar-nav .nav-link {
-  /* rgba(255, 255, 255, 0.85) : blanc à 85% d'opacité
-     r=255, g=255, b=255 (blanc), a=0.85 (transparence) */
   color: rgba(255, 255, 255, 0.85) !important;
-
-  /* Transition sur la couleur : changement fluide en 0.3s */
   transition: color 0.3s ease;
 }
 
-/* ===== ÉTAT HOVER ET ACTIF DES LIENS ===== */
-/* Sélecteur multiple : applique les styles aux deux cas */
-.navbar-nav .nav-link:hover,      /* Au survol */
+.navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
-  /* Lien actif (page courante) */
-  color: white !important; /* Blanc opaque */
+  color: white !important;
 }
 
-/* ============================================
-   FOOTER (PIED DE PAGE)
-   ============================================ */
-
+/* footer */
 .footer-site {
-  /* margin-top: auto : pousse le footer en bas
-     Fonctionne avec flexbox sur le body */
   margin-top: auto;
 }
 
-/* ===== LIENS DU FOOTER AU SURVOL ===== */
 .footer-site a:hover {
-  /* Change la couleur en cyan au survol */
   color: var(--accent-cyan) !important;
-
-  /* Animation fluide du changement de couleur */
   transition: color 0.3s ease;
 }
 
-/* ============================================
-   BOUTONS
-   ============================================ */
-
 .btn {
-  /* border-radius : arrondit les coins (6px de rayon) */
   border-radius: 6px;
-
-  /* font-weight: 500 = demi-gras */
   font-weight: 500;
-
-  /* Transition sur toutes les propriétés */
   transition: all 0.3s ease;
 }
 
-/* ============================================
-   CARTES (CARDS)
-   ============================================ */
-
 .card {
-  /* Transition sur deux propriétés spécifiques */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  /* Coins arrondis */
   border-radius: 8px;
 }
 
-/* ===== EFFET AU SURVOL DES CARTES ===== */
 .card:hover {
-  /* translateY(-5px) : déplace la carte de 5px vers le haut
-     Crée un effet de "levée" */
   transform: translateY(-5px);
-
-  /* Ombre plus prononcée au survol */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* ============================================
-   ACCESSIBILITÉ
-   ============================================
-   :focus-visible : affiche le contour seulement lors de la navigation au clavier
-   (pas avec la souris, pour ne pas gêner visuellement)
-   ============================================ */
-a:focus-visible,
-button:focus-visible {
-  /* outline : contour visible pour les utilisateurs au clavier
-     2px solid = épaisseur 2px, style solide */
-  outline: 2px solid var(--accent-cyan);
-
-  /* outline-offset : espace entre l'élément et le contour (2px) */
-  outline-offset: 2px;
-}
-
-/* ============================================
-   NOTIFICATIONS (POPUPS D'INFORMATION)
-   ============================================
-   Affichées quand on ajoute un produit au panier
-   ============================================ */
 .notification,
 .cart-notification {
-  /* position: fixed : position fixe par rapport à la fenêtre
-     Ne bouge pas lors du défilement */
   position: fixed;
-
-  /* Position : 100px du haut, 20px de la droite */
   top: 100px;
   right: 20px;
-
-  /* Style */
   background-color: var(--accent-cyan);
   color: white;
-  padding: 15px 25px; /* 15px haut/bas, 25px gauche/droite */
+  padding: 15px 25px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-
-  /* z-index très élevé pour être au-dessus de tout */
   z-index: 2000;
-
-  /* État initial : invisible et décalée à droite */
-  opacity: 0; /* Transparent */
-  transform: translateX(400px); /* Décalée de 400px vers la droite */
-
-  /* Transition pour l'animation */
+  opacity: 0;
+  transform: translateX(400px);
   transition: all 0.3s ease;
   font-weight: 500;
-  max-width: 300px; /* Largeur maximale */
+  max-width: 300px;
 }
 
-/* ===== ÉTAT VISIBLE DE LA NOTIFICATION ===== */
 .notification.show,
 .cart-notification.show {
-  /* Visible et à sa position normale */
-  opacity: 1; /* Opaque */
-  transform: translateX(0); /* Position normale (pas de décalage) */
+  opacity: 1;
+  transform: translateX(0);
 }
 
-/* ============================================
-   RESPONSIVE : MOBILE (écrans ≤ 768px)
-   ============================================
-   Media query : applique ces styles seulement sur petits écrans
-   ============================================ */
 @media (max-width: 768px) {
   .notification,
   .cart-notification {
-    /* Sur mobile : notification pleine largeur avec marges */
-    right: 10px;
-    left: 10px; /* 10px de chaque côté */
-    max-width: none; /* Pas de limite de largeur */
-
-    /* Animation différente : vient du haut au lieu de la droite */
-    transform: translateY(-100px); /* Décalée de 100px vers le haut */
+    left: 10px;
+    max-width: none;
+    transform: translateY(-100px);
   }
 
   .notification.show,
   .cart-notification.show {
-    /* À sa position normale */
     transform: translateY(0);
   }
 }
 
-/* ============================================
-   BOUTON RETOUR EN HAUT
-   ============================================
-   Bouton flottant pour remonter en haut de la page
-   ============================================ */
 .back-to-top {
-  /* Position fixe en bas à droite */
   position: fixed;
   bottom: 30px;
   right: 30px;
-
-  /* Taille carrée */
   width: 50px;
   height: 50px;
 
-  /* Style */
   background-color: var(--accent-cyan);
   color: white;
   border: none;
-
-  /* border-radius: 50% : crée un cercle parfait */
   border-radius: 50%;
-
-  /* cursor: pointer : change le curseur en main au survol */
   cursor: pointer;
-
-  /* Flexbox pour centrer l'icône */
   display: flex;
-  align-items: center; /* Centre verticalement */
-  justify-content: center; /* Centre horizontalement */
+  align-items: center;
+  justify-content: center;
 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 
-  /* État initial : invisible */
   opacity: 0;
-  visibility: hidden; /* Masque complètement l'élément */
-  transform: translateY(20px); /* Décalé de 20px vers le bas */
+  visibility: hidden;
+  transform: translateY(20px);
 
   transition: all 0.3s ease;
   padding: 0;
 }
 
-/* ===== ÉTAT HOVER ===== */
 .back-to-top:hover {
   background-color: var(--primary-blue);
-  transform: translateY(-5px); /* Remonte de 5px */
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Ombre plus prononcée */
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* ===== ÉTAT ACTIF (CLIC) ===== */
 .back-to-top:active {
-  transform: translateY(-2px); /* Légèrement remonté */
+  transform: translateY(-2px);
 }
 
-/* ===== ÉTAT VISIBLE ===== */
 .back-to-top.show {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0); /* Position normale */
+  transform: translateY(0);
 }
 
-/* ===== ICÔNE SVG DANS LE BOUTON ===== */
 .back-to-top svg {
   width: 24px;
   height: 24px;
   transition: transform 0.3s ease;
 }
 
-/* ===== ANIMATION DE L'ICÔNE AU SURVOL ===== */
 .back-to-top:hover svg {
-  transform: translateY(-2px); /* L'icône remonte légèrement */
+  transform: translateY(-2px);
 }
 
-/* ============================================
-   RESPONSIVE : MOBILE
-   ============================================ */
 @media (max-width: 768px) {
   .back-to-top {
-    /* Sur mobile : bouton plus petit et plus proche des bords */
     bottom: 20px;
     right: 20px;
     width: 45px;
@@ -434,7 +239,6 @@ button:focus-visible {
   }
 
   .back-to-top svg {
-    /* Icône plus petite sur mobile */
     width: 20px;
     height: 20px;
   }
