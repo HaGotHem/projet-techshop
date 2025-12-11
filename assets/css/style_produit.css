@@ -8,18 +8,32 @@
     min-height: calc(100vh - 200px);
 }
 
+[data-theme="dark"] .products-section {
+    background-color: var(--bg-primary);
+}
+
 .products-section h1 {
     color: var(--primary-blue);
     font-weight: 700;
     font-size: 2.5rem;
 }
 
+[data-theme="dark"] .products-section h1 {
+    color: var(--text-accent);
+}
+
 /* Sidebar Filtres */
 .filters-sidebar {
-    background-color: white;
+    background-color: var(--card-bg);
     padding: 1.5rem;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .filters-sidebar {
+    box-shadow: 0 4px 16px var(--shadow-color);
+    border: 1px solid var(--border-color-light);
 }
 
 .filters-sidebar h2 {
@@ -30,15 +44,20 @@
     border-bottom: 2px solid var(--light-bg);
 }
 
+[data-theme="dark"] .filters-sidebar h2 {
+    color: var(--text-accent);
+    border-bottom-color: var(--border-color);
+}
+
 .filters {
     margin-bottom: 0;
 }
 
 /* Boutons Filtres */
 .btn-filter {
-    background-color: white;
-    color: var(--dark-gray);
-    border: 2px solid var(--dark-gray);
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
     padding: 12px 20px;
     margin-bottom: 10px;
     border-radius: 8px;
@@ -99,14 +118,20 @@
 
 /* Cartes Produits */
 .product-card {
-    border: none;
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    background-color: white;
+    background-color: var(--card-bg);
     position: relative;
     opacity: 0;
     animation: fadeInUp 0.6s ease forwards;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .product-card {
+    border: 1px solid var(--border-color-light);
+    box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .product-card:nth-child(1) { animation-delay: 0.1s; }
@@ -132,6 +157,11 @@
 .product-card:hover {
     transform: translateY(-10px) scale(1.02);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .product-card:hover {
+    box-shadow: 0 12px 32px var(--shadow-color-hover);
+    border-color: var(--accent-cyan);
 }
 
 .product-card img {
@@ -168,6 +198,12 @@
     left: 10px;
     box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
     font-weight: 700;
+    z-index: 11; /* Au-dessus du badge promo normal */
+}
+
+/* Quand les deux badges sont présents, décaler le badge promo vers le bas */
+.product-card:has(.featured-badge) .badge-promo:not(.featured-badge) {
+    top: 50px; /* Décalé vers le bas pour éviter la superposition */
 }
 
 .product-card:has(.featured-badge) {
@@ -188,6 +224,10 @@
     font-weight: 700;
     color: var(--primary-blue);
     font-family: 'JetBrains Mono', monospace;
+}
+
+[data-theme="dark"] .price-current {
+    color: var(--text-accent);
 }
 
 .price-old {
@@ -275,13 +315,17 @@
     background-color: var(--light-bg);
 }
 
+[data-theme="dark"] .cart-item:hover {
+    background-color: var(--bg-secondary);
+}
+
 .cart-item-info {
     flex: 1;
 }
 
 .cart-item-name {
     font-weight: 600;
-    color: var(--dark-gray);
+    color: var(--text-primary);
     margin-bottom: 5px;
 }
 
@@ -289,6 +333,10 @@
     color: var(--accent-cyan);
     font-weight: 600;
     font-family: 'JetBrains Mono', monospace;
+}
+
+[data-theme="dark"] .cart-item-price {
+    color: var(--text-accent);
 }
 
 .cart-item-remove {
@@ -315,6 +363,10 @@
     font-size: 1.5rem;
     font-weight: 700;
     font-family: 'JetBrains Mono', monospace;
+}
+
+[data-theme="dark"] #cart-total {
+    color: var(--text-accent);
 }
 
 /* Notification */
@@ -449,6 +501,10 @@
     margin-bottom: 1rem;
 }
 
+[data-theme="dark"] .price-filter h3 {
+    color: var(--text-accent);
+}
+
 .price-checkbox-container {
     display: flex;
     flex-direction: column;
@@ -481,7 +537,7 @@
 
 .price-checkbox-container .form-check-label {
     cursor: pointer;
-    color: var(--dark-gray);
+    color: var(--text-primary);
     font-weight: 500;
     transition: color 0.2s ease;
     user-select: none;

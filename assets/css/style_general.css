@@ -2,7 +2,7 @@
    STYLES GÉNÉRAUX
    ======================================== */
 
-/* Variables CSS */
+/* Variables CSS - Mode Clair (défaut) */
 :root {
   --primary-blue: #1e3a8a;
   --accent-cyan: #06b6d4;
@@ -13,6 +13,35 @@
   --spacing-md: 16px;
   --spacing-lg: 24px;
   --spacing-xl: 32px;
+  /* Variables pour le mode clair */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --text-primary: #334155;
+  --text-secondary: #64748b;
+  --text-heading: #1e3a8a; /* Bleu pour les titres en mode clair */
+  --text-accent: #06b6d4;
+  --border-color: #e2e8f0;
+  --card-bg: #ffffff;
+}
+
+/* Variables CSS - Mode Sombre */
+[data-theme="dark"] {
+  --primary-blue: #1e3a8a;
+  --accent-cyan: #06b6d4;
+  --dark-gray: #334155;
+  --light-bg: #0f172a;
+  --accent-orange: #f97316;
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --text-primary: #f1f5f9; /* Amélioré pour meilleur contraste (ratio ~13:1) */
+  --text-secondary: #cbd5e1; /* Ratio ~9.5:1 - suffisant */
+  --text-heading: #e2e8f0; /* Pour les titres - ratio ~12.6:1 */
+  --text-accent: #06b6d4; /* Cyan pour accents et titres secondaires */
+  --border-color: #64748b; /* Plus clair pour meilleure visibilité */
+  --border-color-light: #94a3b8; /* Pour bordures encore plus visibles */
+  --card-bg: #1e293b;
+  --shadow-color: rgba(0, 0, 0, 0.7); /* Ombres plus visibles */
+  --shadow-color-hover: rgba(0, 0, 0, 0.9); /* Ombres au survol */
 }
 
 /* Polices */
@@ -33,10 +62,17 @@
   box-sizing: border-box;
 }
 
+/* Transitions pour le changement de thème */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
 /* Body */
 body {
   font-family: "Inter", sans-serif;
-  color: var(--dark-gray);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
   scroll-behavior: smooth;
   display: flex;
   flex-direction: column;
@@ -84,6 +120,11 @@ main {
   background-color: var(--primary-blue) !important;
 }
 
+[data-theme="dark"] .header-site {
+  box-shadow: 0 2px 12px var(--shadow-color-hover);
+  border-bottom: 1px solid var(--border-color-light);
+}
+
 .navbar-brand {
   font-weight: 700;
   font-size: 1.5rem;
@@ -103,6 +144,11 @@ main {
 /* Footer */
 .footer-site {
   margin-top: auto;
+  background-color: #212529 !important;
+}
+
+[data-theme="dark"] .footer-site {
+  background-color: #0a0e14 !important;
 }
 
 .footer-site a:hover {
@@ -110,15 +156,55 @@ main {
   transition: color 0.3s ease;
 }
 
+/* Bouton Toggle Thème */
+.theme-toggle {
+  background: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 1rem;
+}
+
+.theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: white;
+  transform: scale(1.1);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
 /* Cartes */
 .card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease, border-color 0.3s ease;
   border-radius: 8px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .card {
+  border: 1px solid var(--border-color-light);
+  box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .card:hover {
+  box-shadow: 0 8px 24px var(--shadow-color-hover);
+  border-color: var(--accent-cyan);
 }
 
 /* Notifications */
@@ -194,6 +280,92 @@ main {
 
 .back-to-top:hover svg {
   transform: translateY(-2px);
+}
+
+/* Modals en mode sombre */
+[data-theme="dark"] .modal-content {
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color-light);
+  box-shadow: 0 8px 32px var(--shadow-color-hover);
+}
+
+[data-theme="dark"] .modal-header {
+  border-bottom: 1px solid var(--border-color-light);
+}
+
+[data-theme="dark"] .modal-footer {
+  border-top: 1px solid var(--border-color-light);
+}
+
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--accent-cyan);
+}
+
+[data-theme="dark"] .text-muted {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .bg-light {
+  background-color: var(--bg-secondary) !important;
+}
+
+/* Amélioration du contraste pour les titres en mode sombre */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: var(--text-heading);
+}
+
+/* Amélioration du contraste pour les liens en mode sombre */
+[data-theme="dark"] a:not(.btn):not(.nav-link):not(.navbar-brand) {
+  color: var(--text-accent);
+}
+
+[data-theme="dark"] a:not(.btn):not(.nav-link):not(.navbar-brand):hover {
+  color: var(--accent-cyan);
+  opacity: 1;
+}
+
+/* Contraste pour les textes sur fond sombre */
+[data-theme="dark"] .card-body,
+[data-theme="dark"] .card-text,
+[data-theme="dark"] p {
+  color: var(--text-primary);
+}
+
+/* Contraste pour les placeholders */
+[data-theme="dark"] .form-control::placeholder,
+[data-theme="dark"] .form-select::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+/* Titres avec couleur primaire - utiliser accent en mode sombre */
+[data-theme="dark"] h1[style*="color: var(--primary-blue)"],
+[data-theme="dark"] h2[style*="color: var(--primary-blue)"],
+[data-theme="dark"] h3[style*="color: var(--primary-blue)"],
+[data-theme="dark"] .contact-section h1,
+[data-theme="dark"] .products-section h1,
+[data-theme="dark"] .about-intro h1,
+[data-theme="dark"] .about-intro h2,
+[data-theme="dark"] .history-section h2,
+[data-theme="dark"] .team-section h2,
+[data-theme="dark"] .values-section h2 {
+  color: var(--text-accent) !important;
 }
 
 /* Responsive */

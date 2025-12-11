@@ -14,12 +14,22 @@
     font-size: 2.5rem;
 }
 
+[data-theme="dark"] .contact-section h1 {
+    color: var(--text-accent);
+}
+
 /* Wrapper Formulaire */
 .contact-form-wrapper {
-    background-color: white;
+    background-color: var(--card-bg);
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .contact-form-wrapper {
+    box-shadow: 0 4px 16px var(--shadow-color);
+    border: 1px solid var(--border-color-light);
 }
 
 .contact-form-wrapper h2 {
@@ -27,19 +37,25 @@
     font-weight: 600;
 }
 
+[data-theme="dark"] .contact-form-wrapper h2 {
+    color: var(--text-accent);
+}
+
 /* Formulaire */
 .form-label {
     font-weight: 600;
-    color: var(--dark-gray);
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
 
 .form-control,
 .form-select {
-    border: 2px solid #e2e8f0;
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     padding: 12px 16px;
     transition: all 0.3s ease;
+    background-color: var(--card-bg);
+    color: var(--text-primary);
 }
 
 .form-control:focus,
@@ -143,16 +159,25 @@
 
 /* Carte Informations */
 .contact-info-card {
-    border: none;
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    background-color: white;
+    background-color: var(--card-bg);
     height: 100%;
+}
+
+[data-theme="dark"] .contact-info-card {
+    box-shadow: 0 4px 16px var(--shadow-color);
+    border: 1px solid var(--border-color-light);
 }
 
 .contact-info-card h2 {
     color: var(--primary-blue);
     font-weight: 600;
+}
+
+[data-theme="dark"] .contact-info-card h2 {
+    color: var(--text-accent);
 }
 
 .contact-info-item {
@@ -170,13 +195,13 @@
 }
 
 .contact-info-item h3 {
-    color: var(--dark-gray);
+    color: var(--text-primary);
     font-weight: 600;
     margin-bottom: 0.5rem;
 }
 
 .contact-info-item p {
-    color: var(--dark-gray);
+    color: var(--text-primary);
     line-height: 1.6;
     margin: 0;
 }
@@ -191,6 +216,14 @@
 .contact-link:hover {
     color: var(--primary-blue);
     text-decoration: underline;
+}
+
+[data-theme="dark"] .contact-link {
+    color: var(--text-accent);
+}
+
+[data-theme="dark"] .contact-link:hover {
+    color: var(--accent-cyan);
 }
 
 /* Image Carte */

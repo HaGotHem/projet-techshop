@@ -184,13 +184,31 @@
   background-color: var(--light-bg);
 }
 
+[data-theme="dark"] .services-section {
+  background-color: var(--bg-primary);
+}
+
+[data-theme="dark"] .services-section h2 {
+  color: var(--text-accent);
+}
+
 .services-section .card {
   opacity: 1;
   transition: all 0.3s ease;
 }
 
+[data-theme="dark"] .services-section .card {
+  border: 1px solid var(--border-color-light);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
 .services-section .card:hover {
   transform: translateY(-10px) scale(1.02);
+}
+
+[data-theme="dark"] .services-section .card:hover {
+  box-shadow: 0 12px 28px var(--shadow-color-hover);
+  border-color: var(--accent-cyan);
 }
 
 .service-icon {
@@ -284,12 +302,25 @@
   background-color: var(--light-bg);
 }
 
+[data-theme="dark"] .testimonials-section {
+  background-color: var(--bg-primary);
+}
+
+[data-theme="dark"] .testimonials-section h2 {
+  color: var(--text-accent);
+}
+
 .testimonials-section .card {
   opacity: 1;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
   border: 2px solid transparent;
+}
+
+[data-theme="dark"] .testimonials-section .card {
+  border: 1px solid var(--border-color-light);
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .testimonials-section .card::before {
@@ -316,6 +347,11 @@
 .testimonials-section .card:hover {
   transform: translateY(-15px) scale(1.02);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  border-color: var(--accent-cyan);
+}
+
+[data-theme="dark"] .testimonials-section .card:hover {
+  box-shadow: 0 15px 40px var(--shadow-color-hover);
   border-color: var(--accent-cyan);
 }
 
@@ -386,7 +422,7 @@
 
 .testimonial-card:hover .testimonial-text {
   transform: translateX(5px);
-  color: var(--dark-gray);
+  color: var(--text-primary);
   font-weight: 500;
 }
 
