@@ -1,0 +1,543 @@
+/* ============================================
+   PAGE D'ACCUEIL - style_index.css
+   ============================================
+   Styles spécifiques à la page d'accueil
+   Niveau BTS SIO 1ère Année
+   ============================================ */
+
+/* ============================================
+   SECTION HERO (CARROUSEL DE PROMOTIONS)
+   ============================================
+   Approche mobile-first : styles de base pour mobile,
+   puis amélioration pour les grands écrans
+   ============================================ */
+.hero-section {
+    /* Dégradé de couleur : du bleu au cyan
+       linear-gradient : crée un dégradé linéaire
+       135deg : angle de 135 degrés (diagonal)
+       0% : commence avec primary-blue
+       100% : finit avec accent-cyan */
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-cyan) 100%);
+    
+    color: white;
+    
+    /* Hauteur minimale : 500px sur mobile */
+    min-height: 500px;
+    
+    /* position: relative : permet de positionner les enfants en absolute */
+    position: relative;
+}
+
+.hero-section .carousel {
+    min-height: 500px;
+}
+
+.hero-section .carousel-item {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+}
+
+/* Réduire la durée de transition du carrousel Bootstrap */
+.hero-section .carousel-fade .carousel-item {
+    transition-duration: 0.1s;
+    transition-property: opacity;
+}
+
+.hero-section .carousel-item-next:not(.carousel-item-start),
+.hero-section .active.carousel-item-end {
+    transform: translateX(0);
+}
+
+.hero-section .carousel-item-prev:not(.carousel-item-end),
+.hero-section .active.carousel-item-start {
+    transform: translateX(0);
+}
+
+/* Masquer les éléments des slides non actives */
+.hero-section .carousel-item:not(.active) h1,
+.hero-section .carousel-item:not(.active) .lead,
+.hero-section .carousel-item:not(.active) .promo-badge,
+.hero-section .carousel-item:not(.active) .btn-animated,
+.hero-section .carousel-item:not(.active) .hero-image-placeholder {
+    opacity: 0;
+}
+
+/* Styles de base pour mobile */
+.hero-section h1 {
+    color: white;
+    font-size: 1.75rem;
+}
+
+.hero-section .lead {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+}
+
+.hero-image-placeholder {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 60px 20px;
+    text-align: center;
+    color: white;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 20px;
+}
+
+/* ============================================
+   BADGE DE PROMOTION
+   ============================================
+   Badge animé qui pulse pour attirer l'attention
+   ============================================ */
+.promo-badge {
+    /* display: inline-block : permet d'avoir width/height tout en restant inline */
+    display: inline-block;
+    
+    background-color: var(--accent-orange);
+    color: white;
+    padding: 8px 20px;  /* 8px haut/bas, 20px gauche/droite */
+    
+    /* border-radius: 20px : coins très arrondis (forme de pilule) */
+    border-radius: 20px;
+    
+    font-weight: 600;
+    font-size: 0.9rem;  /* 90% de la taille de base */
+    
+    /* text-transform: uppercase : met tout en majuscules */
+    text-transform: uppercase;
+    
+    /* letter-spacing : espacement entre les lettres (1px) */
+    letter-spacing: 1px;
+    
+    /* Animation : pulse pendant 2 secondes, en boucle infinie */
+    animation: pulse 2s infinite;
+}
+
+/* ===== DÉFINITION DE L'ANIMATION PULSE ===== */
+/* @keyframes : définit une animation personnalisée */
+@keyframes pulse {
+    /* 0% et 100% : état initial et final (même taille) */
+    0%, 100% {
+        transform: scale(1);  /* Taille normale */
+    }
+    
+    /* 50% : au milieu de l'animation (agrandi) */
+    50% {
+        transform: scale(1.05);  /* Agrandi de 5% */
+    }
+}
+
+/* ============================================
+   BOUTON ANIMÉ
+   ============================================
+   Effet de vague qui se propage au survol
+   Utilise ::before (pseudo-élément) pour créer l'animation
+   ============================================ */
+.btn-animated {
+    /* position: relative : nécessaire pour positionner ::before en absolute */
+    position: relative;
+    
+    /* overflow: hidden : cache ce qui dépasse (la vague) */
+    overflow: hidden;
+    
+    transition: all 0.3s ease;
+    border: none;
+    z-index: 1;  /* Au-dessus de ::before */
+}
+
+/* ===== PSEUDO-ÉLÉMENT ::before ===== */
+/* ::before : crée un élément virtuel AVANT le contenu du bouton */
+.btn-animated::before {
+    /* content: '' : obligatoire pour que ::before existe (même si vide) */
+    content: '';
+    
+    /* Position absolue par rapport au bouton */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+    /* Taille initiale : 0 (invisible) */
+    width: 0;
+    height: 0;
+    
+    /* Forme circulaire */
+    border-radius: 50%;
+    
+    /* Fond blanc semi-transparent */
+    background: rgba(255, 255, 255, 0.3);
+    
+    /* Centre le cercle : translate(-50%, -50%) décale de moitié de sa taille */
+    transform: translate(-50%, -50%);
+    
+    /* Transition sur la taille */
+    transition: width 0.6s, height 0.6s;
+    
+    /* z-index: -1 : derrière le texte du bouton */
+    z-index: -1;
+}
+
+/* ===== ANIMATION AU SURVOL ===== */
+.btn-animated:hover::before {
+    /* Le cercle grandit pour créer l'effet de vague */
+    width: 300px;
+    height: 300px;
+}
+
+.btn-animated span {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.btn-animated:hover span {
+    transform: scale(1.05);
+}
+
+.btn-animated:active {
+    transform: scale(0.98);
+}
+
+/* Contrôles du carrousel - Mobile first */
+.hero-section .carousel-control-prev,
+.hero-section .carousel-control-next {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.hero-section .carousel-control-prev {
+    left: 10px;
+}
+
+.hero-section .carousel-control-next {
+    right: 10px;
+}
+
+.hero-section .carousel-control-prev:hover,
+.hero-section .carousel-control-next:hover {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.hero-section .carousel-control-prev-icon,
+.hero-section .carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Indicateurs du carrousel */
+.hero-section .carousel-indicators {
+    bottom: 30px;
+}
+
+.hero-section .carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.hero-section .carousel-indicators button.active {
+    background-color: white;
+    width: 30px;
+    border-radius: 6px;
+}
+
+/* === SERVICES SECTION === */
+.services-section {
+    background-color: var(--light-bg);
+}
+
+.services-section .card {
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.services-section .card:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+.service-icon {
+    font-size: 3rem;
+    transition: transform 0.3s ease;
+}
+
+.services-section .card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* === COLLAGE SECTION === */
+.collage-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    opacity: 0;
+}
+
+.product-placeholder {
+    background-color: var(--light-bg);
+    border: 2px dashed var(--dark-gray);
+    border-radius: 8px;
+    padding: 80px 20px;
+    text-align: center;
+    color: var(--dark-gray);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-placeholder::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(6, 182, 212, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: all 0.5s;
+    opacity: 0;
+}
+
+.collage-item:hover .product-placeholder::before {
+    animation: shine 1.5s infinite;
+}
+
+.collage-item:hover .product-placeholder {
+    border-color: var(--accent-cyan);
+    background-color: rgba(6, 182, 212, 0.1);
+    transform: scale(1.05);
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* === TESTIMONIALS SECTION === */
+.testimonials-section {
+    background-color: var(--light-bg);
+}
+
+.testimonials-section .card {
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+}
+
+.testimonials-section .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.1), transparent);
+    transition: left 0.5s ease;
+    z-index: 0;
+}
+
+.testimonials-section .card:hover::before {
+    left: 100%;
+}
+
+.testimonials-section .card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    border-color: var(--accent-cyan);
+}
+
+.testimonial-card {
+    cursor: pointer;
+}
+
+.testimonial-card .card-body {
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover .card-body {
+    padding: 1.5rem;
+}
+
+.rating {
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover .rating {
+    transform: scale(1.1);
+    margin-bottom: 1rem;
+}
+
+.rating .star {
+    color: #F97316;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    display: inline-block;
+}
+
+.testimonial-card:hover .rating .star {
+    transform: scale(1.2) rotate(10deg);
+    text-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
+}
+
+.testimonial-card:hover .rating .star:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.testimonial-card:hover .rating .star:nth-child(2) {
+    transition-delay: 0.05s;
+}
+
+.testimonial-card:hover .rating .star:nth-child(3) {
+    transition-delay: 0.1s;
+}
+
+.testimonial-card:hover .rating .star:nth-child(4) {
+    transition-delay: 0.15s;
+}
+
+.testimonial-card:hover .rating .star:nth-child(5) {
+    transition-delay: 0.2s;
+}
+
+.rating .star.empty {
+    color: #ccc;
+}
+
+.testimonial-text {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.testimonial-card:hover .testimonial-text {
+    transform: translateX(5px);
+    color: var(--dark-gray);
+    font-weight: 500;
+}
+
+.testimonial-card:hover .testimonial-text::before {
+    content: '"';
+    position: absolute;
+    left: -15px;
+    top: -5px;
+    font-size: 3rem;
+    color: var(--accent-cyan);
+    opacity: 0.3;
+    font-family: serif;
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover .testimonial-text::after {
+    content: '"';
+    position: absolute;
+    right: -15px;
+    bottom: -20px;
+    font-size: 3rem;
+    color: var(--accent-cyan);
+    opacity: 0.3;
+    font-family: serif;
+    transition: all 0.3s ease;
+}
+
+.testimonial-author {
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.testimonial-card:hover .testimonial-author {
+    transform: translateX(10px);
+    opacity: 1;
+    color: var(--accent-cyan);
+    font-weight: 600;
+}
+
+/* === RESPONSIVE - MOBILE FIRST === */
+/* Tablette et plus (768px et +) */
+@media (min-width: 768px) {
+    .hero-section {
+        min-height: 600px;
+    }
+
+    .hero-section .carousel {
+        min-height: 600px;
+    }
+
+    .hero-section .carousel-item {
+        min-height: 600px;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-section .lead {
+        font-size: 1.25rem;
+    }
+
+    .hero-image-placeholder {
+        padding: 100px 20px;
+        margin-top: 0;
+    }
+
+    .hero-section .carousel-control-prev,
+    .hero-section .carousel-control-next {
+        width: 50px;
+        height: 50px;
+    }
+
+    .hero-section .carousel-control-prev {
+        left: 20px;
+    }
+
+    .hero-section .carousel-control-next {
+        right: 20px;
+    }
+}
+
+/* Desktop (1200px et +) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+
+    .hero-section {
+        min-height: 650px;
+    }
+
+    .hero-section .carousel {
+        min-height: 650px;
+    }
+
+    .hero-section .carousel-item {
+        min-height: 650px;
+    }
+
+    .hero-section h1 {
+        font-size: 3rem;
+    }
+
+    .hero-image-placeholder {
+        padding: 120px 20px;
+    }
+}

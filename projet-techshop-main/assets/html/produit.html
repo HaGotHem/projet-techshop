@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<!-- 
+  ============================================
+  PAGE PRODUITS - produit.html
+  ============================================
+  Niveau BTS SIO 1ère Année
+  Cette page affiche tous les produits avec un système de filtres
+  ============================================
+-->
+
+<html lang="fr">
+  <!-- 
+    ============================================
+    EN-TÊTE DU DOCUMENT (HEAD)
+    ============================================
+  -->
+  <head>
+    <!-- Encodage UTF-8 pour les caractères spéciaux -->
+    <meta charset="UTF-8">
+    
+    <!-- Viewport pour le responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Titre de la page -->
+    <title>TechShop - Produits</title>
+    
+    <!-- 
+      Liens vers les fichiers CSS
+      Note : ../ remonte d'un niveau dans l'arborescence
+      (produit.html est dans assets/html/, les CSS sont dans assets/css/)
+    -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style_general.css">
+    <link rel="stylesheet" href="../css/style_produit.css">
+  </head>
+  
+  <body>
+    <!-- 
+      ============================================
+      HEADER (EN-TÊTE DU SITE)
+      ============================================
+      Identique sur toutes les pages pour la cohérence
+    -->
+    <header class="header-site">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <!-- Logo -->
+                <a class="navbar-brand" href="../../index.html">
+                    <strong>TechShop</strong>
+                </a>
+
+                <!-- Menu Hamburger (Mobile) -->
+                <button class="navbar-toggler" type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Liens Navigation -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../index.html">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="produit.html">Produits</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="apropos.html">À propos</a>
+                        </li>
+                    </ul>
+
+                    <!-- Panier -->
+                    <div class="cart-icon ms-3">
+                        <button class="btn btn-outline-light position-relative" type="button" data-bs-toggle="modal" data-bs-target="#cartModal">
+                            <span>Panier</span>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">
+                                0
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 
+      ============================================
+      CONTENU PRINCIPAL (MAIN)
+      ============================================
+    -->
+    <main>
+        <!-- 
+          ============================================
+          SECTION PRODUITS
+          ============================================
+          py-5 : Padding vertical de 5 unités (haut et bas)
+        -->
+        <section class="products-section py-5">
+            <!-- container : Centre le contenu et ajoute des marges -->
+            <div class="container">
+                <!-- Titre principal de la page -->
+                <h1 class="text-center mb-4">Nos Produits</h1>
+                
+                <!-- Sous-titre descriptif -->
+                <p class="text-center text-muted mb-5">
+                    Découvrez notre sélection de produits technologiques de qualité
+                </p>
+
+                <!-- 
+                  ============================================
+                  LIGNE PRINCIPALE (ROW)
+                  ============================================
+                  Contient la sidebar filtres et la grille de produits
+                -->
+                <div class="row">
+                    <!-- 
+                      ============================================
+                      SIDEBAR FILTRES (COLONNE GAUCHE)
+                      ============================================
+                      col-lg-3 : Prend 3/12 de la largeur sur grand écran (25%)
+                      mb-4 mb-lg-0 : Marge en bas sur mobile, aucune sur desktop
+                    -->
+                    <div class="col-lg-3 mb-4 mb-lg-0">
+                        <div class="filters-sidebar">
+                            <!-- 
+                              Titre des filtres
+                              d-none d-lg-block : Masqué sur mobile, visible sur desktop
+                            -->
+                            <h2 class="h5 mb-3 d-none d-lg-block">Filtres</h2>
+                            
+                            <div class="filters">
+                                <!-- 
+                                  Groupe de boutons filtres
+                                  d-flex flex-wrap : Flexbox avec retour à la ligne
+                                  justify-content-center : Centre les boutons
+                                  d-lg-block : En colonne sur desktop
+                                  role="group" : Attribut d'accessibilité
+                                -->
+                                <div class="btn-group d-flex flex-wrap justify-content-center d-lg-block" 
+                                     role="group" 
+                                     aria-label="Filtres produits">
+                                    
+                                    <!-- 
+                                      Bouton "Tous" - ACTIF par défaut
+                                      data-filter="all" : Attribut pour JavaScript
+                                      active : Classe Bootstrap pour l'état actif
+                                    -->
+                                    <button type="button" 
+                                            class="btn btn-filter active" 
+                                            data-filter="all">
+                                        Tous
+                                    </button>
+                                    
+                                    <!-- Bouton filtre Smartphones -->
+                                    <button type="button" 
+                                            class="btn btn-filter" 
+                                            data-filter="smartphone">
+                                        Smartphones
+                                    </button>
+                                    
+                                    <!-- Bouton filtre Laptops -->
+                                    <button type="button" 
+                                            class="btn btn-filter" 
+                                            data-filter="laptop">
+                                        Laptops
+                                    </button>
+                                    
+                                    <!-- Bouton filtre Accessoires -->
+                                    <button type="button" 
+                                            class="btn btn-filter" 
+                                            data-filter="accessoire">
+                                        Accessoires
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 
+                      ============================================
+                      GRILLE DE PRODUITS (COLONNE DROITE)
+                      ============================================
+                      col-lg-9 : Prend 9/12 de la largeur sur grand écran (75%)
+                    -->
+                    <div class="col-lg-9">
+                        <!-- 
+                          Ligne pour la grille de produits
+                          g-4 : Gap (espacement) de 4 unités entre les colonnes
+                          id="products-grid" : ID pour JavaScript si nécessaire
+                        -->
+                        <div class="row g-4" id="products-grid">
+                            
+                            <!-- 
+                              ============================================
+                              PRODUIT 1 - SMARTPHONE
+                              ============================================
+                              col-sm-6 : 2 colonnes sur petit écran (6/12)
+                              col-md-4 : 3 colonnes sur écran moyen (4/12)
+                              col-lg-3 : 4 colonnes sur grand écran (3/12)
+                              data-category : Attribut pour le filtrage JavaScript
+                            -->
+                            <div class="col-sm-6 col-md-4 col-lg-3 product-item" 
+                                 data-category="smartphone">
+                                
+                                <!-- 
+                                  article : Balise sémantique HTML5 pour un contenu autonome
+                                  card product-card : Classes Bootstrap + personnalisée
+                                  h-100 : Hauteur 100% (toutes les cartes ont la même hauteur)
+                                -->
+                                <article class="card product-card h-100">
+                                    
+                                    <!-- Badge de promotion -->
+                                    <span class="badge badge-promo">Promo -20%</span>
+                                    
+                                    <!-- 
+                                      Image du produit
+                                      card-img-top : Image en haut de la carte Bootstrap
+                                      alt : Texte alternatif pour l'accessibilité
+                                    -->
+                                    <img src="https://placehold.co/300x300/1E3A8A/FFFFFF?text=Smartphone+Pro" 
+                                         class="card-img-top" 
+                                         alt="Smartphone Pro">
+                                    
+                                    <!-- 
+                                      Corps de la carte
+                                      d-flex flex-column : Flexbox vertical
+                                      Permet de pousser le bouton en bas avec mt-auto
+                                    -->
+                                    <div class="card-body d-flex flex-column">
+                                        <!-- Titre du produit -->
+                                        <h3 class="card-title h5">Smartphone Pro</h3>
+                                        
+                                        <!-- Description du produit -->
+                                        <p class="card-text text-muted small">
+                                            Écran 6.7", 128GB, Appareil photo 48MP
+                                        </p>
+                                        
+                                        <!-- 
+                                          Conteneur des prix
+                                          mb-3 : Marge en bas de 3 unités
+                                        -->
+                                        <div class="price-container mb-3">
+                                            <!-- Prix actuel (en gras) -->
+                                            <span class="price-current">799€</span>
+                                            
+                                            <!-- Prix barré (ancien prix) -->
+                                            <span class="price-old">999€</span>
+                                        </div>
+                                        
+                                        <!-- 
+                                          Bouton "Ajouter au panier"
+                                          mt-auto : Marge-top automatique (pousse en bas)
+                                          data-* : Attributs pour JavaScript
+                                            - data-id : Identifiant unique du produit
+                                            - data-name : Nom du produit
+                                            - data-price : Prix du produit
+                                        -->
+                                        <button class="btn btn-primary add-to-cart mt-auto" 
+                                                data-id="1" 
+                                                data-name="Smartphone Pro" 
+                                                data-price="799">
+                                            Ajouter au panier
+                                        </button>
+                                    </div>
+                                </article>
+                            </div>
+
+                    <!-- Produit 2 - Smartphone -->
+                    <div class="col-sm-6 col-md-4 col-lg-3 product-item" data-category="smartphone">
+                        <article class="card product-card h-100">
+                            <img src="https://placehold.co/300x300/06B6D4/FFFFFF?text=Smartphone+Max" 
+                                 class="card-img-top" 
+                                 alt="Smartphone Max">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="card-title h5">Smartphone Max</h3>
+                                <p class="card-text text-muted small">Écran 6.9", 256GB, Batterie longue durée</p>
+                                <div class="price-container mb-3">
+                                    <span class="price-current">1099€</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart mt-auto" 
+                                        data-id="2" 
+                                        data-name="Smartphone Max" 
+                                        data-price="1099">
+                                    Ajouter au panier
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Produit 3 - Laptop -->
+                    <div class="col-sm-6 col-md-4 col-lg-3 product-item" data-category="laptop">
+                        <article class="card product-card h-100">
+                            <span class="badge badge-promo">Promo -15%</span>
+                            <img src="https://placehold.co/300x300/334155/FFFFFF?text=Laptop+Gaming" 
+                                 class="card-img-top" 
+                                 alt="Laptop Gaming">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="card-title h5">Laptop Gaming</h3>
+                                <p class="card-text text-muted small">RTX 4060, Intel i7, 16GB RAM, 512GB SSD</p>
+                                <div class="price-container mb-3">
+                                    <span class="price-current">1299€</span>
+                                    <span class="price-old">1529€</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart mt-auto" 
+                                        data-id="3" 
+                                        data-name="Laptop Gaming" 
+                                        data-price="1299">
+                                    Ajouter au panier
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Produit 4 - Laptop -->
+                    <div class="col-sm-6 col-md-4 col-lg-3 product-item" data-category="laptop">
+                        <article class="card product-card h-100">
+                            <img src="https://placehold.co/300x300/F97316/FFFFFF?text=Laptop+Ultra" 
+                                 class="card-img-top" 
+                                 alt="Laptop Ultra">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="card-title h5">Laptop Ultra</h3>
+                                <p class="card-text text-muted small">Écran 15.6" 4K, Intel i9, 32GB RAM, 1TB SSD</p>
+                                <div class="price-container mb-3">
+                                    <span class="price-current">2199€</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart mt-auto" 
+                                        data-id="4" 
+                                        data-name="Laptop Ultra" 
+                                        data-price="2199">
+                                    Ajouter au panier
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Produit 5 - Accessoire -->
+                    <div class="col-sm-6 col-md-4 col-lg-3 product-item" data-category="accessoire">
+                        <article class="card product-card h-100">
+                            <span class="badge badge-promo">Promo -30%</span>
+                            <img src="https://placehold.co/300x300/F8FAFC/334155?text=Casque+Audio" 
+                                 class="card-img-top" 
+                                 alt="Casque Audio">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="card-title h5">Casque Audio Pro</h3>
+                                <p class="card-text text-muted small">Réduction de bruit active, Bluetooth 5.0</p>
+                                <div class="price-container mb-3">
+                                    <span class="price-current">139€</span>
+                                    <span class="price-old">199€</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart mt-auto" 
+                                        data-id="5" 
+                                        data-name="Casque Audio Pro" 
+                                        data-price="139">
+                                    Ajouter au panier
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Produit 6 - Accessoire -->
+                    <div class="col-sm-6 col-md-4 col-lg-3 product-item" data-category="accessoire">
+                        <article class="card product-card h-100">
+                            <img src="https://placehold.co/300x300/1E3A8A/FFFFFF?text=Chargeur+Rapide" 
+                                 class="card-img-top" 
+                                 alt="Chargeur Rapide">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="card-title h5">Chargeur Rapide</h3>
+                                <p class="card-text text-muted small">Charge rapide 65W, USB-C, Compatible universel</p>
+                                <div class="price-container mb-3">
+                                    <span class="price-current">29€</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart mt-auto" 
+                                        data-id="6" 
+                                        data-name="Chargeur Rapide" 
+                                        data-price="29">
+                                    Ajouter au panier
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Produit 7 - Smartphone -->
+                    <div class="col-sm-6 col-md-4 col-lg-3 product-item" data-category="smartphone">
+                        <article class="card product-card h-100">
+                            <img src="https://placehold.co/300x300/06B6D4/FFFFFF?text=Smartphone+Mini" 
+                                 class="card-img-top" 
+                                 alt="Smartphone Mini">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="card-title h5">Smartphone Mini</h3>
+                                <p class="card-text text-muted small">Écran 5.8", 64GB, Compact et léger</p>
+                                <div class="price-container mb-3">
+                                    <span class="price-current">449€</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart mt-auto" 
+                                        data-id="7" 
+                                        data-name="Smartphone Mini" 
+                                        data-price="449">
+                                    Ajouter au panier
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Produit 8 - Accessoire -->
+                    <div class="col-sm-6 col-md-4 col-lg-3 product-item" data-category="accessoire">
+                        <article class="card product-card h-100">
+                            <span class="badge badge-promo">Nouveau</span>
+                            <img src="https://placehold.co/300x300/F97316/FFFFFF?text=Écouteurs+Wireless" 
+                                 class="card-img-top" 
+                                 alt="Écouteurs Wireless">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="card-title h5">Écouteurs Wireless</h3>
+                                <p class="card-text text-muted small">Qualité audio HD, Autonomie 30h, Bluetooth 5.2</p>
+                                <div class="price-container mb-3">
+                                    <span class="price-current">79€</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart mt-auto" 
+                                        data-id="8" 
+                                        data-name="Écouteurs Wireless" 
+                                        data-price="79">
+                                    Ajouter au panier
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Panier -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title h4" id="cartModalLabel">Votre Panier</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cart-items">
+                        <p class="text-muted text-center">Votre panier est vide</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="w-100 d-flex justify-content-between align-items-center mb-3">
+                        <strong>Total : <span id="cart-total">0€</span></strong>
+                    </div>
+                    <div class="w-100 d-flex gap-2">
+                        <button type="button" class="btn btn-secondary flex-fill" data-bs-dismiss="modal">Continuer mes achats</button>
+                        <button type="button" class="btn btn-primary flex-fill" id="checkout-btn">Valider la commande</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-site bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Colonne 1 : À propos -->
+                <div class="col-md-4">
+                    <h3 class="h5 mb-3">TechShop</h3>
+                    <p>Votre partenaire technologie depuis 2020. Les meilleurs produits aux meilleurs prix.</p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="text-white me-3" aria-label="Facebook">Facebook</a>
+                        <a href="#" class="text-white me-3" aria-label="Twitter">Twitter</a>
+                        <a href="#" class="text-white me-3" aria-label="Instagram">Instagram</a>
+                        <a href="#" class="text-white" aria-label="LinkedIn">LinkedIn</a>
+                    </div>
+                </div>
+
+                <!-- Colonne 2 : Liens utiles -->
+                <div class="col-md-4">
+                    <h3 class="h5 mb-3">Liens Utiles</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="../../index.html" class="text-white-50 text-decoration-none">Accueil</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="produit.html" class="text-white-50 text-decoration-none">Produits</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="contact.html" class="text-white-50 text-decoration-none">Contact</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="apropos.html" class="text-white-50 text-decoration-none">À propos</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 3 : Newsletter -->
+                <div class="col-md-4">
+                    <h3 class="h5 mb-3">Newsletter</h3>
+                    <p>Recevez nos offres exclusives</p>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email"
+                                   class="form-control"
+                                   placeholder="Votre email"
+                                   aria-label="Email pour newsletter">
+                            <button class="btn btn-primary" type="submit">
+                                S'abonner
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <hr class="my-4 bg-white">
+
+            <!-- Copyright -->
+            <div class="text-center text-white-50">
+                <p class="mb-0">&copy; 2024 TechShop. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../javascript/bootstrap.min.js"></script>
+    <script src="../javascript/cart.js"></script>
+    <script src="../javascript/script_produit.js"></script>
+    <script src="../javascript/back-to-top.js"></script>
+</body>
+</html>
