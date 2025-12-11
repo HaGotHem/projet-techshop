@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initProductFilters();
         initAddToCartButtons();
         initPagination();
+        initPriceFilter();
     }, 100);
 
     // Filtres produits
@@ -205,6 +206,83 @@ document.addEventListener('DOMContentLoaded', function() {
                     renderPagination();
                 }
             });
+        });
+    }
+
+    // Filtre de prix
+    function initPriceFilter() {
+        const minPriceSlider = document.getElementById('min-price');
+        const maxPriceSlider = document.getElementById('max-price');
+        const minPriceLabel = document.getElementById('min-price-label');
+        const maxPriceLabel = document.getElementById('max-price-label');
+        const resetPriceBtn = document.getElementById('reset-price');
+        const productItems = Array.from(document.querySelectorAll('.product-item'));
+
+        let minPrice = 0;
+        let maxPrice = 2200;
+
+        function updatePriceLabels() {
+            minPriceLabel.textContent = minPrice;
+            maxPriceLabel.textContent = maxPrice;
+        }
+
+        function filterByPrice() {
+            productItems.forEach(item => {
+                const button = item.querySelector('.add-to-cart');
+                const price = parseInt(button.dataset.originalPrice);
+                
+                if (price >= minPrice && price <= maxPrice) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+
+            // Mettre à jour la pagination
+            const visibleItems = productItems.filter(item => item.style.display !== 'none');
+            const paginationContainer = document.getElementById('pagination');
+            if (visibleItems.length <= 12) {
+                paginationContainer.parentElement.parentElement.style.display = 'none';
+            } else {
+                paginationContainer.parentElement.parentElement.style.display = 'block';
+            }
+        }
+
+        minPriceSlider.addEventListener('input', function() {
+            minPrice = parseInt(this.value);
+            if (minPrice > maxPrice - 10) {
+                minPrice = maxPrice - 10;
+                this.value = minPrice;
+            }
+            updatePriceLabels();
+            filterByPrice();
+        });
+
+        maxPriceSlider.addEventListener('input', function() {
+            maxPrice = parseInt(this.value);
+            if (maxPrice < minPrice + 10) {
+                maxPrice = minPrice + 10;
+                this.value = maxPrice;
+            }
+            updatePriceLabels();
+            filterByPrice();
+        });
+
+        resetPriceBtn.addEventListener('click', function() {
+            minPrice = 0;
+            maxPrice = 2200;
+            minPriceSlider.value = minPrice;
+            maxPriceSlider.value = maxPrice;
+            updatePriceLabels();
+            filterByPrice();
         });
     }
 });

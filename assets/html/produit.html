@@ -136,48 +136,75 @@
                             <h2 class="h5 mb-3 d-none d-lg-block">Filtres</h2>
                             
                             <div class="filters">
-                                <!-- 
-                                  Groupe de boutons filtres
-                                  d-flex flex-wrap : Flexbox avec retour à la ligne
-                                  justify-content-center : Centre les boutons
-                                  d-lg-block : En colonne sur desktop
-                                  role="group" : Attribut d'accessibilité
-                                -->
-                                <div class="btn-group d-flex flex-wrap justify-content-center d-lg-block" 
-                                     role="group" 
-                                     aria-label="Filtres produits">
-                                    
-                                    <!-- 
-                                      Bouton "Tous" - ACTIF par défaut
-                                      data-filter="all" : Attribut pour JavaScript
-                                      active : Classe Bootstrap pour l'état actif
-                                    -->
-                                    <button type="button" 
-                                            class="btn btn-filter active" 
-                                            data-filter="all">
-                                        Tous
-                                    </button>
-                                    
-                                    <!-- Bouton filtre Smartphones -->
-                                    <button type="button" 
-                                            class="btn btn-filter" 
-                                            data-filter="smartphone">
-                                        Smartphones
-                                    </button>
-                                    
-                                    <!-- Bouton filtre Laptops -->
-                                    <button type="button" 
-                                            class="btn btn-filter" 
-                                            data-filter="laptop">
-                                        Laptops
-                                    </button>
-                                    
-                                    <!-- Bouton filtre Accessoires -->
-                                    <button type="button" 
-                                            class="btn btn-filter" 
-                                            data-filter="accessoire">
-                                        Accessoires
-                                    </button>
+                                <!-- Filtres par catégorie -->
+                                <div class="mb-4">
+                                    <h3 class="h6 mb-3">Catégories</h3>
+                                    <div class="btn-group d-flex flex-wrap justify-content-center d-lg-block" 
+                                         role="group" 
+                                         aria-label="Filtres produits">
+                                        
+                                        <button type="button" 
+                                                class="btn btn-filter active" 
+                                                data-filter="all">
+                                            Tous
+                                        </button>
+                                        
+                                        <button type="button" 
+                                                class="btn btn-filter" 
+                                                data-filter="smartphone">
+                                            Smartphones
+                                        </button>
+                                        
+                                        <button type="button" 
+                                                class="btn btn-filter" 
+                                                data-filter="laptop">
+                                            Laptops
+                                        </button>
+                                        
+                                        <button type="button" 
+                                                class="btn btn-filter" 
+                                                data-filter="accessoire">
+                                            Accessoires
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Filtre par prix -->
+                                <div class="price-filter">
+                                    <h3 class="h6 mb-3">Prix</h3>
+                                    <div class="price-range-container">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="price-label">
+                                                <span id="min-price-label">0</span>€
+                                            </span>
+                                            <span class="price-label">
+                                                <span id="max-price-label">2200</span>€
+                                            </span>
+                                        </div>
+                                        
+                                        <div class="range-slider">
+                                            <input type="range" 
+                                                   id="min-price" 
+                                                   class="form-range" 
+                                                   min="0" 
+                                                   max="2200" 
+                                                   value="0" 
+                                                   step="10">
+                                            <input type="range" 
+                                                   id="max-price" 
+                                                   class="form-range" 
+                                                   min="0" 
+                                                   max="2200" 
+                                                   value="2200" 
+                                                   step="10">
+                                        </div>
+                                        
+                                        <button type="button" 
+                                                class="btn btn-sm btn-outline-primary w-100 mt-3" 
+                                                id="reset-price">
+                                            Réinitialiser le prix
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -265,7 +292,8 @@
                                         <button class="btn btn-primary add-to-cart mt-auto" 
                                                 data-id="1" 
                                                 data-name="Smartphone Pro" 
-                                                data-price="799">
+                                                data-price="799"
+                                                data-original-price="799">
                                             Ajouter au panier
                                         </button>
                                     </div>
@@ -287,7 +315,8 @@
                                 <button class="btn btn-primary add-to-cart mt-auto" 
                                         data-id="2" 
                                         data-name="Smartphone Max" 
-                                        data-price="1099">
+                                        data-price="1099"
+                                        data-original-price="1099">
                                     Ajouter au panier
                                 </button>
                             </div>
@@ -311,7 +340,8 @@
                                 <button class="btn btn-primary add-to-cart mt-auto" 
                                         data-id="3" 
                                         data-name="Laptop Gaming" 
-                                        data-price="1299">
+                                        data-price="1299"
+                                        data-original-price="1299">
                                     Ajouter au panier
                                 </button>
                             </div>
@@ -333,7 +363,8 @@
                                 <button class="btn btn-primary add-to-cart mt-auto" 
                                         data-id="4" 
                                         data-name="Laptop Ultra" 
-                                        data-price="2199">
+                                        data-price="2199"
+                                        data-original-price="2199">
                                     Ajouter au panier
                                 </button>
                             </div>
@@ -357,7 +388,8 @@
                                 <button class="btn btn-primary add-to-cart mt-auto" 
                                         data-id="5" 
                                         data-name="Casque Audio Pro" 
-                                        data-price="139">
+                                        data-price="139"
+                                        data-original-price="139">
                                     Ajouter au panier
                                 </button>
                             </div>
@@ -379,7 +411,8 @@
                                 <button class="btn btn-primary add-to-cart mt-auto" 
                                         data-id="6" 
                                         data-name="Chargeur Rapide" 
-                                        data-price="29">
+                                        data-price="29"
+                                        data-original-price="29">
                                     Ajouter au panier
                                 </button>
                             </div>
@@ -401,7 +434,8 @@
                                 <button class="btn btn-primary add-to-cart mt-auto" 
                                         data-id="7" 
                                         data-name="Smartphone Mini" 
-                                        data-price="449">
+                                        data-price="449"
+                                        data-original-price="449">
                                     Ajouter au panier
                                 </button>
                             </div>
@@ -424,7 +458,8 @@
                                 <button class="btn btn-primary add-to-cart mt-auto" 
                                         data-id="8" 
                                         data-name="Écouteurs Wireless" 
-                                        data-price="79">
+                                        data-price="79"
+                                        data-original-price="79">
                                     Ajouter au panier
                                 </button>
                             </div>
@@ -447,7 +482,8 @@
                                 <button class="btn btn-primary add-to-cart mt-auto" 
                                         data-id="9" 
                                         data-name="Montre Connectée" 
-                                        data-price="299">
+                                        data-price="299"
+                                        data-original-price="299">
                                     Ajouter au panier
                                 </button>
                             </div>
@@ -470,7 +506,8 @@
                                 <button class="btn btn-primary add-to-cart mt-auto" 
                                         data-id="10" 
                                         data-name="Clavier Mécanique RGB" 
-                                        data-price="149">
+                                        data-price="149"
+                                        data-original-price="149">
                                     Ajouter au panier
                                 </button>
                             </div>
@@ -493,7 +530,8 @@
                                 <button class="btn btn-primary add-to-cart mt-auto" 
                                         data-id="11" 
                                         data-name="Tablette Pro 11 pouces" 
-                                        data-price="699">
+                                        data-price="699"
+                                        data-original-price="699">
                                     Ajouter au panier
                                 </button>
                             </div>
@@ -518,7 +556,8 @@
                                 <button class="btn btn-primary add-to-cart mt-auto" 
                                         data-id="12" 
                                         data-name="Casque Premium Studio" 
-                                        data-price="224">
+                                        data-price="224"
+                                        data-original-price="224">
                                     Ajouter au panier
                                 </button>
                             </div>
@@ -540,7 +579,8 @@
                                 <button class="btn btn-primary add-to-cart mt-auto" 
                                         data-id="13" 
                                         data-name="Smartphone Ultra 5G" 
-                                        data-price="1499">
+                                        data-price="1499"
+                                        data-original-price="1499">
                                     Ajouter au panier
                                 </button>
                             </div>
@@ -564,7 +604,8 @@
                                 <button class="btn btn-primary add-to-cart mt-auto" 
                                         data-id="14" 
                                         data-name="Laptop Business Pro" 
-                                        data-price="899">
+                                        data-price="899"
+                                        data-original-price="899">
                                     Ajouter au panier
                                 </button>
                             </div>
@@ -586,7 +627,8 @@
                                 <button class="btn btn-primary add-to-cart mt-auto" 
                                         data-id="15" 
                                         data-name="Power Bank 20000mAh" 
-                                        data-price="49">
+                                        data-price="49"
+                                        data-original-price="49">
                                     Ajouter au panier
                                 </button>
                             </div>
@@ -608,7 +650,8 @@
                                 <button class="btn btn-primary add-to-cart mt-auto" 
                                         data-id="16" 
                                         data-name="Webcam 4K Pro" 
-                                        data-price="129">
+                                        data-price="129"
+                                        data-original-price="129">
                                     Ajouter au panier
                                 </button>
                             </div>
@@ -631,7 +674,8 @@
                                 <button class="btn btn-primary add-to-cart mt-auto" 
                                         data-id="17" 
                                         data-name="Smartphone Fold" 
-                                        data-price="1899">
+                                        data-price="1899"
+                                        data-original-price="1899">
                                     Ajouter au panier
                                 </button>
                             </div>
@@ -653,7 +697,8 @@
                                 <button class="btn btn-primary add-to-cart mt-auto" 
                                         data-id="18" 
                                         data-name="Laptop Creator" 
-                                        data-price="1799">
+                                        data-price="1799"
+                                        data-original-price="1799">
                                     Ajouter au panier
                                 </button>
                             </div>
@@ -677,7 +722,8 @@
                                 <button class="btn btn-primary add-to-cart mt-auto" 
                                         data-id="19" 
                                         data-name="Souris Gaming RGB" 
-                                        data-price="79">
+                                        data-price="79"
+                                        data-original-price="79">
                                     Ajouter au panier
                                 </button>
                             </div>
@@ -699,7 +745,8 @@
                                 <button class="btn btn-primary add-to-cart mt-auto" 
                                         data-id="20" 
                                         data-name="Support Laptop Alu" 
-                                        data-price="39">
+                                        data-price="39"
+                                        data-original-price="39">
                                     Ajouter au panier
                                 </button>
                             </div>
