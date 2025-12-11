@@ -209,40 +209,68 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Filtre de prix
+    // Filtre de prix par checkboxes
     function initPriceFilter() {
-        const minPriceSlider = document.getElementById('min-price');
-        const maxPriceSlider = document.getElementById('max-price');
-        const minPriceLabel = document.getElementById('min-price-label');
-        const maxPriceLabel = document.getElementById('max-price-label');
+        const priceCheckboxes = document.querySelectorAll('.price-checkbox');
         const resetPriceBtn = document.getElementById('reset-price');
         const productItems = Array.from(document.querySelectorAll('.product-item'));
 
-        let minPrice = 0;
-        let maxPrice = 2200;
-
-        function updatePriceLabels() {
-            minPriceLabel.textContent = minPrice;
-            maxPriceLabel.textContent = maxPrice;
+        function getPriceRanges() {
+            const selectedRanges = [];
+            priceCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    const value = checkbox.value;
+                    if (value === '0-50') {
+                        selectedRanges.push({ min: 0, max: 50 });
+                    } else if (value === '50-150') {
+                        selectedRanges.push({ min: 50, max: 150 });
+                    } else if (value === '150-500') {
+                        selectedRanges.push({ min: 150, max: 500 });
+                    } else if (value === '500-1000') {
+                        selectedRanges.push({ min: 500, max: 1000 });
+                    } else if (value === '1000-2000') {
+                        selectedRanges.push({ min: 1000, max: 2000 });
+                    } else if (value === '2000-plus') {
+                        selectedRanges.push({ min: 2000, max: 999999 });
+                    }
+                }
+            });
+            return selectedRanges;
         }
 
         function filterByPrice() {
+            const selectedRanges = getPriceRanges();
+            
             productItems.forEach(item => {
                 const button = item.querySelector('.add-to-cart');
                 const price = parseInt(button.dataset.originalPrice);
                 
-                if (price >= minPrice && price <= maxPrice) {
+                // Si aucune case n'est cochée, afficher tous les produits
+                if (selectedRanges.length === 0) {
                     item.style.display = 'block';
                     setTimeout(() => {
                         item.style.opacity = '1';
                         item.style.transform = 'translateY(0)';
                     }, 50);
                 } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'scale(0.8)';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
+                    // Vérifier si le prix est dans une des tranches sélectionnées
+                    const isInRange = selectedRanges.some(range => 
+                        price >= range.min && price <= range.max
+                    );
+                    
+                    if (isInRange) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
                 }
             });
 
@@ -256,32 +284,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        minPriceSlider.addEventListener('input', function() {
-            minPrice = parseInt(this.value);
-            if (minPrice > maxPrice - 10) {
-                minPrice = maxPrice - 10;
-                this.value = minPrice;
-            }
-            updatePriceLabels();
-            filterByPrice();
+        // Écouter les changements sur les checkboxes
+        priceCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', filterByPrice);
         });
 
-        maxPriceSlider.addEventListener('input', function() {
-            maxPrice = parseInt(this.value);
-            if (maxPrice < minPrice + 10) {
-                maxPrice = minPrice + 10;
-                this.value = maxPrice;
-            }
-            updatePriceLabels();
-            filterByPrice();
-        });
-
+        // Bouton de réinitialisation
         resetPriceBtn.addEventListener('click', function() {
-            minPrice = 0;
-            maxPrice = 2200;
-            minPriceSlider.value = minPrice;
-            maxPriceSlider.value = maxPrice;
-            updatePriceLabels();
+            priceCheckboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
             filterByPrice();
         });
     }

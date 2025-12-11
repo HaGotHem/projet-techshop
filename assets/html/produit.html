@@ -172,37 +172,71 @@
                                 <!-- Filtre par prix -->
                                 <div class="price-filter">
                                     <h3 class="h6 mb-3">Prix</h3>
-                                    <div class="price-range-container">
-                                        <div class="d-flex justify-content-between mb-2">
-                                            <span class="price-label">
-                                                <span id="min-price-label">0</span>€
-                                            </span>
-                                            <span class="price-label">
-                                                <span id="max-price-label">2200</span>€
-                                            </span>
+                                    <div class="price-checkbox-container">
+                                        <div class="form-check">
+                                            <input class="form-check-input price-checkbox" 
+                                                   type="checkbox" 
+                                                   value="0-50" 
+                                                   id="price-0-50">
+                                            <label class="form-check-label" for="price-0-50">
+                                                Moins de 50€
+                                            </label>
                                         </div>
                                         
-                                        <div class="range-slider">
-                                            <input type="range" 
-                                                   id="min-price" 
-                                                   class="form-range" 
-                                                   min="0" 
-                                                   max="2200" 
-                                                   value="0" 
-                                                   step="10">
-                                            <input type="range" 
-                                                   id="max-price" 
-                                                   class="form-range" 
-                                                   min="0" 
-                                                   max="2200" 
-                                                   value="2200" 
-                                                   step="10">
+                                        <div class="form-check">
+                                            <input class="form-check-input price-checkbox" 
+                                                   type="checkbox" 
+                                                   value="50-150" 
+                                                   id="price-50-150">
+                                            <label class="form-check-label" for="price-50-150">
+                                                50€ - 150€
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="form-check">
+                                            <input class="form-check-input price-checkbox" 
+                                                   type="checkbox" 
+                                                   value="150-500" 
+                                                   id="price-150-500">
+                                            <label class="form-check-label" for="price-150-500">
+                                                150€ - 500€
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="form-check">
+                                            <input class="form-check-input price-checkbox" 
+                                                   type="checkbox" 
+                                                   value="500-1000" 
+                                                   id="price-500-1000">
+                                            <label class="form-check-label" for="price-500-1000">
+                                                500€ - 1000€
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="form-check">
+                                            <input class="form-check-input price-checkbox" 
+                                                   type="checkbox" 
+                                                   value="1000-2000" 
+                                                   id="price-1000-2000">
+                                            <label class="form-check-label" for="price-1000-2000">
+                                                1000€ - 2000€
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="form-check">
+                                            <input class="form-check-input price-checkbox" 
+                                                   type="checkbox" 
+                                                   value="2000-plus" 
+                                                   id="price-2000-plus">
+                                            <label class="form-check-label" for="price-2000-plus">
+                                                Plus de 2000€
+                                            </label>
                                         </div>
                                         
                                         <button type="button" 
                                                 class="btn btn-sm btn-outline-primary w-100 mt-3" 
                                                 id="reset-price">
-                                            Réinitialiser le prix
+                                            Réinitialiser
                                         </button>
                                     </div>
                                 </div>
