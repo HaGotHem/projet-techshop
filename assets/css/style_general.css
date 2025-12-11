@@ -1,57 +1,39 @@
+/* ========================================
+   STYLES GÉNÉRAUX
+   ======================================== */
+
+/* Variables CSS */
 :root {
-  /* ===== COULEURS DE LA CHARTE GRAPHIQUE ===== */
-  /* Couleur principale : bleu foncé */
   --primary-blue: #1e3a8a;
-
-  /* Couleur d'accent : cyan (pour les boutons, liens) */
   --accent-cyan: #06b6d4;
-
-  /* Couleur de texte : gris foncé */
   --dark-gray: #334155;
-
-  /* Couleur de fond clair : gris très clair */
   --light-bg: #f8fafc;
-
-  /* Couleur d'accent secondaire : orange (pour les promotions) */
   --accent-orange: #f97316;
-
-  /* ===== ESPACEMENTS STANDARDS ===== */
-  /* Petits espaces (8px) */
   --spacing-sm: 8px;
-
-  /* Espaces moyens (16px) */
   --spacing-md: 16px;
-
-  /* Grands espaces (24px) */
   --spacing-lg: 24px;
-
-  /* Très grands espaces (32px) */
   --spacing-xl: 32px;
 }
 
-/* fonts */
+/* Polices */
 @font-face {
-  /* Nom de la police (à utiliser dans font-family) */
   font-family: "Inter";
-
-  /* Chemin vers le fichier de police */
   src: url("../fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
-  /* format("truetype") : indique le type de fichier */
 }
 
 @font-face {
-  /* Police monospace pour les prix et codes */
   font-family: "JetBrains Mono";
   src: url("../fonts/JetBrainsMono-VariableFont_wght.ttf") format("truetype");
 }
 
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ===== STYLES DU BODY ===== */
+/* Body */
 body {
   font-family: "Inter", sans-serif;
   color: var(--dark-gray);
@@ -61,10 +43,12 @@ body {
   min-height: 100vh;
 }
 
-/* ===== STYLE DU MAIN ===== */
+/* Main */
 main {
   flex: 1;
 }
+
+/* Boutons */
 .btn-primary {
   background-color: var(--accent-cyan);
   border-color: var(--accent-cyan);
@@ -85,8 +69,13 @@ main {
   color: var(--accent-cyan) !important;
 }
 
-/* header */
+.btn {
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
 
+/* Header */
 .header-site {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: sticky;
@@ -95,14 +84,12 @@ main {
   background-color: var(--primary-blue) !important;
 }
 
-/* ===== LOGO DU SITE ===== */
 .navbar-brand {
   font-weight: 700;
   font-size: 1.5rem;
   color: white !important;
 }
 
-/* ===== LIENS DE NAVIGATION ===== */
 .navbar-nav .nav-link {
   color: rgba(255, 255, 255, 0.85) !important;
   transition: color 0.3s ease;
@@ -113,7 +100,7 @@ main {
   color: white !important;
 }
 
-/* footer */
+/* Footer */
 .footer-site {
   margin-top: auto;
 }
@@ -123,12 +110,7 @@ main {
   transition: color 0.3s ease;
 }
 
-.btn {
-  border-radius: 6px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
+/* Cartes */
 .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 8px;
@@ -139,6 +121,7 @@ main {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
+/* Notifications */
 .notification,
 .cart-notification {
   position: fixed;
@@ -163,27 +146,13 @@ main {
   transform: translateX(0);
 }
 
-@media (max-width: 768px) {
-  .notification,
-  .cart-notification {
-    left: 10px;
-    max-width: none;
-    transform: translateY(-100px);
-  }
-
-  .notification.show,
-  .cart-notification.show {
-    transform: translateY(0);
-  }
-}
-
+/* Bouton Retour en haut */
 .back-to-top {
   position: fixed;
   bottom: 30px;
   right: 30px;
   width: 50px;
   height: 50px;
-
   background-color: var(--accent-cyan);
   color: white;
   border: none;
@@ -192,14 +161,11 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   z-index: 1000;
-
   opacity: 0;
   visibility: hidden;
   transform: translateY(20px);
-
   transition: all 0.3s ease;
   padding: 0;
 }
@@ -230,7 +196,20 @@ main {
   transform: translateY(-2px);
 }
 
+/* Responsive */
 @media (max-width: 768px) {
+  .notification,
+  .cart-notification {
+    left: 10px;
+    max-width: none;
+    transform: translateY(-100px);
+  }
+
+  .notification.show,
+  .cart-notification.show {
+    transform: translateY(0);
+  }
+
   .back-to-top {
     bottom: 20px;
     right: 20px;

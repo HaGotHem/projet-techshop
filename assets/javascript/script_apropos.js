@@ -1,14 +1,15 @@
-// === PAGE À PROPOS ===
-// Animations au scroll
+/* ========================================
+   SCRIPT PAGE À PROPOS
+   ======================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Options pour l'Intersection Observer
+    // Configuration Observer
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -100px 0px'
     };
 
-    // Observer pour les animations au scroll
+    // Observer animations au scroll
     const scrollObserver = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -18,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observer les éléments à animer
+    // Éléments à animer
     const elementsToAnimate = document.querySelectorAll(
         '.about-intro img, ' +
         '.about-intro .lead, ' +
@@ -34,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         scrollObserver.observe(el);
     });
 
-    // Animation spécifique pour les éléments avec la classe animate-in
+    // Style animation
     const style = document.createElement('style');
     style.textContent = `
         .animate-in {
@@ -44,13 +45,13 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
 
-    // Animation spéciale pour la timeline
+    // Timeline delays
     const timelineItems = document.querySelectorAll('.timeline-item');
     timelineItems.forEach((item, index) => {
         item.style.transitionDelay = `${index * 0.1}s`;
     });
 
-    // Animation au hover pour les cartes équipe
+    // Hover cartes équipe
     const teamCards = document.querySelectorAll('.team-card');
     teamCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
@@ -62,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Animation au hover pour les cartes valeurs
+    // Hover cartes valeurs
     const valueCards = document.querySelectorAll('.value-card');
     valueCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
@@ -82,4 +83,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-

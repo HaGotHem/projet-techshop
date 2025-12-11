@@ -1,9 +1,12 @@
-// Animation au chargement de la page avec anime.js
+/* ========================================
+   SCRIPT PAGE ACCUEIL
+   ======================================== */
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Animation du carrousel au changement de slide
+    // Carousel
     const carousel = document.getElementById('heroCarousel');
     if (carousel) {
-        // Utiliser 'slid' au lieu de 'slide' pour déclencher APRÈS la transition Bootstrap
+        // Animation après transition
         carousel.addEventListener('slid.bs.carousel', function(event) {
             const activeSlide = event.relatedTarget;
             const title = activeSlide.querySelector('h1');
@@ -12,13 +15,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const btn = activeSlide.querySelector('.btn-animated');
             const image = activeSlide.querySelector('.hero-image-placeholder');
 
-            // Réinitialiser l'opacité et la position avant l'animation
             const elements = [title, lead, badge, btn, image].filter(el => el !== null);
             elements.forEach(el => {
                 el.style.opacity = '0';
             });
 
-            // Animation rapide et synchronisée des éléments du slide
             if (title) {
                 anime({
                     targets: title,
@@ -75,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Réinitialiser les éléments de la slide précédente avant la transition
+        // Animation avant transition
         carousel.addEventListener('slide.bs.carousel', function(event) {
             const currentSlide = event.from;
             const prevSlide = carousel.querySelectorAll('.carousel-item')[currentSlide];
@@ -92,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Animation du premier slide au chargement
+        // Animation premier slide
         const firstSlide = carousel.querySelector('.carousel-item.active');
         if (firstSlide) {
             const title = firstSlide.querySelector('h1');
@@ -112,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Animation au scroll pour les sections
+    // Intersection Observer
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -100px 0px'
@@ -123,7 +124,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (entry.isIntersecting) {
                 const element = entry.target;
                 
-                // Animation différente selon le type d'élément
                 if (element.classList.contains('card')) {
                     anime({
                         targets: element,
@@ -150,19 +150,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 }
 
-                // Ne plus observer cet élément
                 observer.unobserve(element);
             }
         });
     }, observerOptions);
 
-    // Observer les éléments à animer
+    // Éléments à observer
     const elementsToAnimate = document.querySelectorAll('.card, .collage-item, .services-section h2, .collage-section h2, .testimonials-section h2');
     elementsToAnimate.forEach(el => {
         observer.observe(el);
     });
 
-    // Animation des cartes de services avec stagger
+    // Animation cartes services
     const serviceCards = document.querySelectorAll('.services-section .card');
     if (serviceCards.length > 0) {
         const serviceSection = document.querySelector('.services-section');
@@ -184,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
         serviceObserver.observe(serviceSection);
     }
 
-    // Animation des témoignages avec stagger
+    // Animation témoignages
     const testimonialCards = document.querySelectorAll('.testimonials-section .card');
     if (testimonialCards.length > 0) {
         const testimonialSection = document.querySelector('.testimonials-section');
@@ -205,14 +204,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }, observerOptions);
         testimonialObserver.observe(testimonialSection);
 
-        // Animations anime.js au hover des cartes d'avis
+        // Animation hover témoignages
         testimonialCards.forEach(card => {
             const stars = card.querySelectorAll('.rating .star');
             const text = card.querySelector('.testimonial-text');
             const author = card.querySelector('.testimonial-author');
 
             card.addEventListener('mouseenter', function() {
-                // Animation des étoiles avec stagger et rotation
                 anime({
                     targets: stars,
                     rotate: function() {
@@ -224,7 +222,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     easing: 'easeOutElastic(1, .8)'
                 });
 
-                // Animation du texte avec un léger bounce
                 if (text) {
                     anime({
                         targets: text,
@@ -234,7 +231,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 }
 
-                // Animation de l'auteur avec slide
                 if (author) {
                     anime({
                         targets: author,
@@ -246,7 +242,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 }
 
-                // Animation de la carte avec un léger tilt
                 anime({
                     targets: card,
                     rotateY: [0, 2],
@@ -257,7 +252,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             card.addEventListener('mouseleave', function() {
-                // Réinitialiser les étoiles
                 anime({
                     targets: stars,
                     rotate: 0,
@@ -267,7 +261,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     easing: 'easeInExpo'
                 });
 
-                // Réinitialiser le texte
                 if (text) {
                     anime({
                         targets: text,
@@ -277,7 +270,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 }
 
-                // Réinitialiser l'auteur
                 if (author) {
                     anime({
                         targets: author,
@@ -288,7 +280,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 }
 
-                // Réinitialiser la carte
                 anime({
                     targets: card,
                     rotateY: 0,
@@ -300,4 +291,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-

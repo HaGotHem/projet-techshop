@@ -1,20 +1,10 @@
-/* ============================================
-   PAGE PRODUITS - style_produit.css
-   ============================================
-   Styles spécifiques à la page produits
-   Niveau BTS SIO 1ère Année
-   ============================================ */
+/* ========================================
+   PAGE PRODUITS
+   ======================================== */
 
-/* ============================================
-   SECTION PRODUITS
-   ============================================ */
+/* Section Produits */
 .products-section {
-    /* Fond clair */
     background-color: var(--light-bg);
-    
-    /* Hauteur minimale : 100vh (hauteur de la fenêtre) moins 200px
-       calc() : fonction CSS pour faire des calculs
-       Garantit que la section prend au moins toute la hauteur visible */
     min-height: calc(100vh - 200px);
 }
 
@@ -24,21 +14,11 @@
     font-size: 2.5rem;
 }
 
-/* ============================================
-   SIDEBAR FILTRES
-   ============================================
-   Barre latérale avec les boutons de filtrage
-   ============================================ */
+/* Sidebar Filtres */
 .filters-sidebar {
     background-color: white;
-    
-    /* padding: 1.5rem : Espacement interne de 1.5rem (24px) de tous les côtés */
     padding: 1.5rem;
-    
-    /* border-radius: 12px : Coins arrondis */
     border-radius: 12px;
-    
-    /* Ombre portée pour donner de la profondeur */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -50,36 +30,23 @@
     border-bottom: 2px solid var(--light-bg);
 }
 
-/* Filtres */
 .filters {
     margin-bottom: 0;
 }
 
-/* ============================================
-   BOUTONS FILTRES
-   ============================================ */
+/* Boutons Filtres */
 .btn-filter {
-    /* Style de base */
     background-color: white;
     color: var(--dark-gray);
-    
-    /* border: 2px solid : Bordure de 2px, style solide */
     border: 2px solid var(--dark-gray);
-    
-    /* padding: 12px 20px : 12px haut/bas, 20px gauche/droite */
     padding: 12px 20px;
-    
-    margin-bottom: 10px;  /* Espacement entre les boutons */
+    margin-bottom: 10px;
     border-radius: 8px;
     font-weight: 500;
-    
-    /* Transition : animation fluide sur toutes les propriétés */
     transition: all 0.3s ease;
-    
-    text-align: left;  /* Texte aligné à gauche */
+    text-align: left;
 }
 
-/* Desktop : filtres en colonne dans la sidebar */
 @media (min-width: 992px) {
     .btn-filter {
         width: 100%;
@@ -87,7 +54,6 @@
     }
 }
 
-/* Mobile/Tablette : filtres en ligne */
 @media (max-width: 991px) {
     .btn-filter {
         margin: 5px;
@@ -104,29 +70,24 @@
     box-shadow: 0 4px 8px rgba(6, 182, 212, 0.3);
 }
 
-/* Desktop : hover avec translation horizontale */
 @media (min-width: 992px) {
     .btn-filter:hover {
         transform: translateX(5px);
     }
 }
 
-/* Mobile/Tablette : hover avec translation verticale */
 @media (max-width: 991px) {
     .btn-filter:hover {
         transform: translateY(-2px);
     }
 }
 
-/* ===== ÉTAT ACTIF DU BOUTON FILTRE ===== */
-/* .active : Classe ajoutée par JavaScript quand le filtre est sélectionné */
 .btn-filter.active {
     background-color: var(--primary-blue);
     color: white;
     border-color: var(--primary-blue);
 }
 
-/* Position sticky pour desktop */
 @media (min-width: 992px) {
     .filters-sidebar {
         position: sticky;
@@ -136,30 +97,15 @@
     }
 }
 
-/* ============================================
-   CARTES PRODUITS
-   ============================================
-   Style des cartes affichant chaque produit
-   ============================================ */
+/* Cartes Produits */
 .product-card {
     border: none;
     border-radius: 12px;
-    
-    /* overflow: hidden : Cache ce qui dépasse (image qui dépasse, etc.) */
     overflow: hidden;
-    
-    /* Transition avec courbe d'animation personnalisée
-       cubic-bezier : crée un effet de rebond */
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    
     background-color: white;
     position: relative;
-    
-    /* État initial : invisible (pour l'animation) */
     opacity: 0;
-    
-    /* Animation : fadeInUp (apparition depuis le bas)
-       forwards : garde l'état final après l'animation */
     animation: fadeInUp 0.6s ease forwards;
 }
 
@@ -172,18 +118,14 @@
 .product-card:nth-child(7) { animation-delay: 0.7s; }
 .product-card:nth-child(8) { animation-delay: 0.8s; }
 
-/* ===== DÉFINITION DE L'ANIMATION FADEINUP ===== */
 @keyframes fadeInUp {
-    /* État initial (from) */
     from {
-        opacity: 0;              /* Invisible */
-        transform: translateY(30px);  /* Décalé de 30px vers le bas */
+        opacity: 0;
+        transform: translateY(30px);
     }
-    
-    /* État final (to) */
     to {
-        opacity: 1;              /* Visible */
-        transform: translateY(0);  /* Position normale */
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -360,7 +302,7 @@
     font-family: 'JetBrains Mono', monospace;
 }
 
-/* Notification de succès */
+/* Notification */
 .notification,
 .cart-notification {
     position: fixed;
@@ -384,7 +326,7 @@
     transform: translateX(0);
 }
 
-/* Styles pour les boutons de quantité dans le panier */
+/* Boutons de quantité */
 .quantity-btn {
     min-width: 30px;
     height: 30px;
