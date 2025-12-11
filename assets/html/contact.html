@@ -1,13 +1,372 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechShop</title>
-    <link rel="stylesheet" href="./../css/style_contact.css">
-</head>
-<body>
-    
-    <script src="./../javascript/script_contact.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechShop - Contact</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/style_general.css" />
+    <link rel="stylesheet" href="../css/style_contact.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="header-site">
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+          <!-- Logo -->
+          <a class="navbar-brand" href="../../index.html">
+            <strong>TechShop</strong>
+          </a>
+
+          <!-- Menu Hamburger (Mobile) -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Liens Navigation -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="../../index.html">Accueil</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="produit.html">Produits</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="contact.html"
+                  >Contact</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="apropos.html">À propos</a>
+              </li>
+            </ul>
+
+            <!-- Panier -->
+            <div class="cart-icon ms-3">
+              <button
+                class="btn btn-outline-light position-relative"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#cartModal"
+              >
+                <span>Panier</span>
+                <span
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                  id="cart-count"
+                >
+                  0
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <section class="contact-section py-5">
+        <div class="container">
+          <h1 class="text-center mb-4">Contactez-nous</h1>
+          <p class="text-center text-muted mb-5">
+            Une question ? Un besoin particulier ? N'hésitez pas à nous
+            contacter
+          </p>
+
+          <div class="row">
+            <!-- Formulaire de contact -->
+            <div class="col-lg-7 mb-4 mb-lg-0">
+              <div class="contact-form-wrapper">
+                <h2 class="h4 mb-4">Envoyez-nous un message</h2>
+                <form id="contact-form" novalidate>
+                  <!-- Nom complet -->
+                  <div class="mb-3">
+                    <label for="name" class="form-label"
+                      >Nom complet <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name"
+                      name="name"
+                      required
+                      pattern="[A-Za-zÀ-ÿ\s]{2,50}"
+                      aria-describedby="name-feedback"
+                    />
+                    <div class="invalid-feedback" id="name-feedback">
+                      Veuillez entrer un nom valide (2 à 50 caractères, lettres
+                      uniquement).
+                    </div>
+                  </div>
+
+                  <!-- Email -->
+                  <div class="mb-3">
+                    <label for="email" class="form-label"
+                      >Email <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      name="email"
+                      required
+                      aria-describedby="email-feedback"
+                    />
+                    <div class="invalid-feedback" id="email-feedback">
+                      Veuillez entrer une adresse email valide.
+                    </div>
+                  </div>
+
+                  <!-- Téléphone -->
+                  <div class="mb-3">
+                    <label for="phone" class="form-label">Téléphone</label>
+                    <input
+                      type="tel"
+                      class="form-control"
+                      id="phone"
+                      name="phone"
+                      pattern="[0-9+\s\-\(\)]{10,20}"
+                      aria-describedby="phone-feedback"
+                    />
+                    <div class="invalid-feedback" id="phone-feedback">
+                      Veuillez entrer un numéro de téléphone valide.
+                    </div>
+                  </div>
+
+                  <!-- Sujet -->
+                  <div class="mb-3">
+                    <label for="subject" class="form-label"
+                      >Sujet <span class="text-danger">*</span></label
+                    >
+                    <select
+                      class="form-select"
+                      id="subject"
+                      name="subject"
+                      required
+                      aria-describedby="subject-feedback"
+                    >
+                      <option value="">Sélectionnez un sujet</option>
+                      <option value="info">Demande d'information</option>
+                      <option value="order">Question sur une commande</option>
+                      <option value="product">Question sur un produit</option>
+                      <option value="support">Support technique</option>
+                      <option value="other">Autre</option>
+                    </select>
+                    <div class="invalid-feedback" id="subject-feedback">
+                      Veuillez sélectionner un sujet.
+                    </div>
+                  </div>
+
+                  <!-- Message -->
+                  <div class="mb-4">
+                    <label for="message" class="form-label"
+                      >Message <span class="text-danger">*</span></label
+                    >
+                    <textarea
+                      class="form-control"
+                      id="message"
+                      name="message"
+                      rows="6"
+                      required
+                      minlength="10"
+                      maxlength="1000"
+                      aria-describedby="message-feedback"
+                    ></textarea>
+                    <div class="invalid-feedback" id="message-feedback">
+                      Le message doit contenir entre 10 et 1000 caractères.
+                    </div>
+                    <small class="form-text text-muted">
+                      <span id="message-count">0</span> / 1000 caractères
+                    </small>
+                  </div>
+
+                  <!-- Bouton Submit -->
+                  <button type="submit" class="btn btn-primary btn-lg w-100">
+                    Envoyer le message
+                  </button>
+
+                  <!-- Message de succès -->
+                  <div
+                    class="alert alert-success d-none mt-3"
+                    id="success-message"
+                    role="alert"
+                  >
+                    <strong>Message envoyé avec succès !</strong> Nous vous
+                    répondrons dans les plus brefs délais.
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- Informations de contact -->
+            <div class="col-lg-5">
+              <div class="contact-info-card card h-100">
+                <div class="card-body">
+                  <h2 class="h4 mb-4">Nos Coordonnées</h2>
+
+                  <!-- Adresse -->
+                  <div class="contact-info-item mb-4">
+                    <div class="contact-icon mb-2">📍</div>
+                    <h3 class="h6 mb-2">Adresse</h3>
+                    <p class="mb-0">
+                      123 Rue de la Technologie<br />
+                      75001 Paris<br />
+                      France
+                    </p>
+                  </div>
+
+                  <!-- Téléphone -->
+                  <div class="contact-info-item mb-4">
+                    <div class="contact-icon mb-2">📞</div>
+                    <h3 class="h6 mb-2">Téléphone</h3>
+                    <p class="mb-0">
+                      <a href="tel:+33123456789" class="contact-link"
+                        >+33 1 23 45 67 89</a
+                      >
+                    </p>
+                  </div>
+
+                  <!-- Email -->
+                  <div class="contact-info-item mb-4">
+                    <div class="contact-icon mb-2">✉️</div>
+                    <h3 class="h6 mb-2">Email</h3>
+                    <p class="mb-0">
+                      <a href="mailto:contact@techshop.fr" class="contact-link"
+                        >contact@techshop.fr</a
+                      >
+                    </p>
+                  </div>
+
+                  <!-- Horaires -->
+                  <div class="contact-info-item">
+                    <div class="contact-icon mb-2">🕒</div>
+                    <h3 class="h6 mb-2">Horaires d'ouverture</h3>
+                    <p class="mb-0">
+                      <strong>Lundi - Vendredi :</strong> 9h - 18h<br />
+                      <strong>Samedi :</strong> 10h - 16h<br />
+                      <strong>Dimanche :</strong> Fermé
+                    </p>
+                  </div>
+
+                  <!-- Carte (placeholder) -->
+                  <div class="mt-4">
+                    <img
+                      src="https://placehold.co/400x250/1E3A8A/FFFFFF?text=Carte+Google+Maps"
+                      alt="Localisation TechShop"
+                      class="img-fluid rounded"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer-site bg-dark text-white py-5">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Colonne 1 : À propos -->
+          <div class="col-md-4">
+            <h3 class="h5 mb-3">TechShop</h3>
+            <p>
+              Votre partenaire technologie depuis 2020. Les meilleurs produits
+              aux meilleurs prix.
+            </p>
+            <div class="social-links mt-3">
+              <a href="#" class="text-white me-3" aria-label="Facebook"
+                >Facebook</a
+              >
+              <a href="#" class="text-white me-3" aria-label="Twitter"
+                >Twitter</a
+              >
+              <a href="#" class="text-white me-3" aria-label="Instagram"
+                >Instagram</a
+              >
+              <a href="#" class="text-white" aria-label="LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+
+          <!-- Colonne 2 : Liens utiles -->
+          <div class="col-md-4">
+            <h3 class="h5 mb-3">Liens Utiles</h3>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a
+                  href="../../index.html"
+                  class="text-white-50 text-decoration-none"
+                  >Accueil</a
+                >
+              </li>
+              <li class="mb-2">
+                <a
+                  href="produit.html"
+                  class="text-white-50 text-decoration-none"
+                  >Produits</a
+                >
+              </li>
+              <li class="mb-2">
+                <a
+                  href="contact.html"
+                  class="text-white-50 text-decoration-none"
+                  >Contact</a
+                >
+              </li>
+              <li class="mb-2">
+                <a
+                  href="apropos.html"
+                  class="text-white-50 text-decoration-none"
+                  >À propos</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Colonne 3 : Newsletter -->
+          <div class="col-md-4">
+            <h3 class="h5 mb-3">Newsletter</h3>
+            <p>Recevez nos offres exclusives</p>
+            <form class="newsletter-form">
+              <div class="input-group">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Votre email"
+                  aria-label="Email pour newsletter"
+                />
+                <button class="btn btn-primary" type="submit">S'abonner</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <hr class="my-4 bg-white" />
+
+        <!-- Copyright -->
+        <div class="text-center text-white-50">
+          <p class="mb-0">&copy; 2024 TechShop. Tous droits réservés.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../javascript/bootstrap.min.js"></script>
+    <script src="../javascript/cart.js"></script>
+    <script src="../javascript/script_contact.js"></script>
+    <script src="../javascript/back-to-top.js"></script>
+  </body>
 </html>

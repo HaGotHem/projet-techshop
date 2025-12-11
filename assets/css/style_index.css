@@ -19,7 +19,7 @@
 
 /* Réduire la durée de transition du carrousel Bootstrap */
 .hero-section .carousel-fade .carousel-item {
-    transition-duration: 0.4s;
+    transition-duration: 0.1s;
     transition-property: opacity;
 }
 

@@ -1,127 +1,231 @@
 /* === VARIABLES CSS === */
 :root {
-    /* Couleurs de la charte */
-    --primary-blue: #1E3A8A;
-    --accent-cyan: #06B6D4;
-    --dark-gray: #334155;
-    --light-bg: #F8FAFC;
-    --accent-orange: #F97316;
+  /* Couleurs de la charte */
+  --primary-blue: #1e3a8a;
+  --accent-cyan: #06b6d4;
+  --dark-gray: #334155;
+  --light-bg: #f8fafc;
+  --accent-orange: #f97316;
 
-    /* Espacements */
-    --spacing-sm: 8px;
-    --spacing-md: 16px;
-    --spacing-lg: 24px;
-    --spacing-xl: 32px;
+  /* Espacements */
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
 }
 
 /* === POLICES === */
 @font-face {
-    font-family: 'Inter';
-    src: url('../fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+  font-family: "Inter";
+  src: url("../fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'JetBrains Mono';
-    src: url('../fonts/JetBrainsMono-VariableFont_wght.ttf') format('truetype');
+  font-family: "JetBrains Mono";
+  src: url("../fonts/JetBrainsMono-VariableFont_wght.ttf") format("truetype");
 }
 
 /* === RESET & BASE === */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    color: var(--dark-gray);
-    scroll-behavior: smooth;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  color: var(--dark-gray);
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 main {
-    flex: 1;
+  flex: 1;
 }
 
 /* === OVERRIDE BOOTSTRAP === */
 .btn-primary {
-    background-color: var(--accent-cyan);
-    border-color: var(--accent-cyan);
-    color: white;
+  background-color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  color: white;
 }
 
 .btn-primary:hover {
-    background-color: #0891b2;
-    opacity: 0.9;
-    transition: all 0.3s ease;
+  background-color: #0891b2;
+  opacity: 0.9;
+  transition: all 0.3s ease;
 }
 
 .bg-primary {
-    background-color: var(--primary-blue) !important;
+  background-color: var(--primary-blue) !important;
 }
 
 .text-primary {
-    color: var(--accent-cyan) !important;
+  color: var(--accent-cyan) !important;
 }
 
 /* === HEADER === */
 .header-site {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: var(--primary-blue) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--primary-blue) !important;
 }
 
 .navbar-brand {
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: white !important;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: white !important;
 }
 
 .navbar-nav .nav-link {
-    color: rgba(255, 255, 255, 0.85) !important;
-    transition: color 0.3s ease;
+  color: rgba(255, 255, 255, 0.85) !important;
+  transition: color 0.3s ease;
 }
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
-    color: white !important;
+  color: white !important;
 }
 
 /* === FOOTER === */
 .footer-site {
-    margin-top: auto;
+  margin-top: auto;
 }
 
 .footer-site a:hover {
-    color: var(--accent-cyan) !important;
-    transition: color 0.3s ease;
+  color: var(--accent-cyan) !important;
+  transition: color 0.3s ease;
 }
 
 /* === BOUTONS === */
 .btn {
-    border-radius: 6px;
-    font-weight: 500;
-    transition: all 0.3s ease;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 /* === CARTES === */
 .card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 /* === ACCESSIBILITÉ === */
 a:focus-visible,
 button:focus-visible {
-    outline: 2px solid var(--accent-cyan);
-    outline-offset: 2px;
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+}
+
+/* === NOTIFICATIONS === */
+.notification,
+.cart-notification {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  background-color: var(--accent-cyan);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 2000;
+  opacity: 0;
+  transform: translateX(400px);
+  transition: all 0.3s ease;
+  font-weight: 500;
+  max-width: 300px;
+}
+
+.notification.show,
+.cart-notification.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+  .notification,
+  .cart-notification {
+    right: 10px;
+    left: 10px;
+    max-width: none;
+    transform: translateY(-100px);
+  }
+
+  .notification.show,
+  .cart-notification.show {
+    transform: translateY(0);
+  }
+}
+
+/* === BOUTON BACK TO TOP === */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--accent-cyan);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.back-to-top:hover {
+  background-color: var(--primary-blue);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top:active {
+  transform: translateY(-2px);
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top svg {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.back-to-top:hover svg {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+  }
+
+  .back-to-top svg {
+    width: 20px;
+    height: 20px;
+  }
 }
