@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         initProductFilters();
         initAddToCartButtons();
+        initPagination();
     }, 100);
 
     // Filtres produits
@@ -104,4 +105,106 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.product-item').forEach(item => {
         productObserver.observe(item);
     });
+
+    // Pagination
+    function initPagination() {
+        const productsPerPage = 12;
+        let currentPage = 1;
+        const productItems = Array.from(document.querySelectorAll('.product-item'));
+        const paginationContainer = document.getElementById('pagination');
+
+        function showPage(page) {
+            const start = (page - 1) * productsPerPage;
+            const end = start + productsPerPage;
+
+            productItems.forEach((item, index) => {
+                if (index >= start && index < end) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderPagination() {
+            const totalPages = Math.ceil(productItems.length / productsPerPage);
+            paginationContainer.innerHTML = '';
+
+            // Bouton Précédent
+            const prevItem = document.createElement('li');
+            prevItem.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+            prevItem.innerHTML = `<a class="page-link" href="#" aria-label="Précédent">‹</a>`;
+            prevItem.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentPage > 1) {
+                    currentPage--;
+                    showPage(currentPage);
+                    renderPagination();
+                }
+            });
+            paginationContainer.appendChild(prevItem);
+
+            // Numéros de page
+            for (let i = 1; i <= totalPages; i++) {
+                const pageItem = document.createElement('li');
+                pageItem.className = `page-item ${i === currentPage ? 'active' : ''}`;
+                pageItem.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+                pageItem.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    currentPage = i;
+                    showPage(currentPage);
+                    renderPagination();
+                });
+                paginationContainer.appendChild(pageItem);
+            }
+
+            // Bouton Suivant
+            const nextItem = document.createElement('li');
+            nextItem.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+            nextItem.innerHTML = `<a class="page-link" href="#" aria-label="Suivant">›</a>`;
+            nextItem.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    showPage(currentPage);
+                    renderPagination();
+                }
+            });
+            paginationContainer.appendChild(nextItem);
+        }
+
+        // Initialiser la pagination
+        showPage(1);
+        renderPagination();
+
+        // Adapter la pagination aux filtres
+        const filterButtons = document.querySelectorAll('.btn-filter');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                currentPage = 1;
+                const filter = this.dataset.filter;
+                
+                productItems.forEach(item => {
+                    const category = item.dataset.category;
+                    item.style.display = (filter === 'all' || category === filter) ? 'block' : 'none';
+                });
+
+                const visibleItems = productItems.filter(item => item.style.display !== 'none');
+                const totalPages = Math.ceil(visibleItems.length / productsPerPage);
+                
+                if (totalPages <= 1) {
+                    paginationContainer.parentElement.parentElement.style.display = 'none';
+                } else {
+                    paginationContainer.parentElement.parentElement.style.display = 'block';
+                    renderPagination();
+                }
+            });
+        });
+    }
 });
