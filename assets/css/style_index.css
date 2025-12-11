@@ -97,17 +97,15 @@
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
-  border: 3px solid white;
+  border: 2px solid white;
   z-index: 1;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.9);
   color: var(--primary-blue);
-  font-weight: 700;
-  font-size: 1.1rem;
-  padding: 0.75rem 2.5rem;
-  border-radius: 50px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.65rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .btn-animated::before {
@@ -118,18 +116,18 @@
   width: 0;
   height: 0;
   border-radius: 50%;
-  background: var(--primary-blue);
+  background: rgba(255, 255, 255, 0.2);
   transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
+  transition: width 0.5s, height 0.5s;
   z-index: -1;
 }
 
 .btn-animated:hover {
-  background-color: var(--primary-blue);
-  color: white;
+  background-color: white;
+  color: var(--primary-blue);
   border-color: white;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
-  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
 }
 
 .btn-animated:hover::before {
@@ -140,11 +138,11 @@
 .btn-animated span {
   position: relative;
   z-index: 1;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .btn-animated:hover span {
-  transform: scale(1.05);
+  letter-spacing: 0.5px;
 }
 
 .btn-animated:active {
