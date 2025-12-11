@@ -95,10 +95,8 @@
 /* Boutons Animés */
 .btn-animated {
   position: relative;
-  overflow: hidden;
   transition: all 0.3s ease;
   border: 2px solid white;
-  z-index: 1;
   background-color: rgba(255, 255, 255, 0.9);
   color: var(--primary-blue);
   font-weight: 600;
@@ -106,20 +104,6 @@
   padding: 0.65rem 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.btn-animated::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  transform: translate(-50%, -50%);
-  transition: width 0.5s, height 0.5s;
-  z-index: -1;
 }
 
 .btn-animated:hover {
@@ -130,14 +114,8 @@
   transform: translateY(-2px);
 }
 
-.btn-animated:hover::before {
-  width: 300px;
-  height: 300px;
-}
-
 .btn-animated span {
   position: relative;
-  z-index: 1;
   transition: all 0.3s ease;
 }
 
