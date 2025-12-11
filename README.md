@@ -1,100 +1,66 @@
-# 📚 Documentation Finale - TechShop
+# 🛍️ TechShop - Site E-commerce
 
-## 📋 Vue d'ensemble
+Site e-commerce moderne pour la vente de produits technologiques, développé dans le cadre d'un projet BTS SIO.
 
-Ce dossier contient la documentation complète et finale du projet TechShop, organisée en 4 documents principaux.
+## 🚀 Fonctionnalités
 
----
+- **4 pages complètes** : Accueil, Produits, Contact, À propos
+- **Mode sombre/clair** : Toggle avec sauvegarde de préférence
+- **Panier d'achat** : Gestion complète avec localStorage
+- **Filtres produits** : Par catégorie et par prix
+- **Pagination** : Navigation entre les pages de produits
+- **Formulaire de contact** : Validation en temps réel
+- **Responsive** : Design mobile-first adapté à tous les écrans
+- **Animations** : Transitions fluides et effets au scroll
 
-## 📑 Structure de la Documentation
+## 📁 Structure du Projet
 
-### 1. [Charte Graphique](01-Charte-Graphique.md)
-**Contenu** :
-- Palette de couleurs (Mode Clair et Mode Sombre)
-- Typographie
-- Espacements
-- Style des composants
-- Variables CSS
-- Recommandations d'usage
+```
+projet-techshop/
+├── index.html                    # Page d'accueil
+├── assets/
+│   ├── html/                    # Pages secondaires
+│   │   ├── produit.html
+│   │   ├── contact.html
+│   │   └── apropos.html
+│   ├── css/                     # Styles
+│   │   ├── style_general.css   # Styles globaux + variables
+│   │   ├── style_index.css     # Styles page accueil
+│   │   ├── style_produit.css   # Styles page produits
+│   │   ├── style_contact.css  # Styles page contact
+│   │   └── style_apropos.css  # Styles page à propos
+│   └── javascript/              # Scripts
+│       ├── script_general.js   # Scripts globaux (thème, panier, retour haut)
+│       ├── script_index.js     # Scripts page accueil
+│       ├── script_produit.js   # Scripts page produits
+│       ├── script_contact.js   # Scripts page contact
+│       └── script_apropos.js    # Scripts page à propos
+└── doc final/                   # Documentation complète
+```
 
-**Utilisation** : Référence pour le design et le développement CSS
+## 🛠️ Technologies
 
----
+- **HTML5** : Structure sémantique
+- **CSS3** : Variables CSS, Flexbox, Grid, Animations
+- **JavaScript (ES6+)** : Classes, Modules, localStorage, Intersection Observer
+- **Bootstrap 5.3** : Framework CSS pour le responsive
+- **Anime.js** : Bibliothèque d'animations
 
-### 2. [Fonctionnalités JavaScript](02-Fonctionnalites-JavaScript.md)
-**Contenu** :
-- Liste complète des fonctionnalités implémentées
-- Description détaillée de chaque fonctionnalité
-- Structure des fichiers JavaScript
-- API Web utilisées
-- Optimisations de performance
+## 🎨 Design
 
-**Utilisation** : Documentation technique pour les développeurs
+- **Palette de couleurs** : Bleu profond (#1E3A8A) et Cyan (#06B6D4)
+- **Mode sombre** : Support complet avec transitions fluides
+- **Typographie** : Inter (titres) et JetBrains Mono (prix)
 
----
+## 📚 Documentation
 
-### 3. [Planification Technique](03-Planification-Technique.md)
-**Contenu** :
-- Structure HTML sémantique
-- Classes Bootstrap utilisées
-- CSS custom nécessaire
-- Fonctionnalités JavaScript planifiées
-- Structure des fichiers
-- Checklist de développement
+La documentation complète est disponible dans le dossier `doc final/` :
 
-**Utilisation** : Guide de développement et référence technique
+- **Charte Graphique** : Couleurs, typographie, composants
+- **Fonctionnalités JavaScript** : Liste détaillée des fonctionnalités
+- **Planification Technique** : Structure et architecture
+- **Projet TechShop** : Contexte et analyse
 
----
-
-### 4. [Projet TechShop](04-Projet-TechShop.md)
-**Contenu** :
-- Analyse du site existant
-- Défauts identifiés et solutions proposées
-- Répartition par catégorie
-- Priorités de correction
-
-**Utilisation** : Contexte du projet et analyse initiale
-
----
-
-## 🎯 Utilisation de cette Documentation
-
-### Pour les Développeurs
-1. Commencer par la **Planification Technique** pour comprendre la structure
-2. Consulter la **Charte Graphique** pour les styles et couleurs
-3. Référencer les **Fonctionnalités JavaScript** pour l'implémentation
-
-### Pour les Designers
-1. Consulter la **Charte Graphique** pour les couleurs et styles
-2. Référencer le **Projet TechShop** pour comprendre le contexte
-
-### Pour les Chefs de Projet
-1. Lire le **Projet TechShop** pour comprendre les objectifs
-2. Consulter la **Planification Technique** pour le planning
-3. Vérifier les **Fonctionnalités JavaScript** pour le suivi
-
----
-
-## 📊 Statut du Projet
-
-- ✅ **HTML** : 4 pages complètes et sémantiques
-- ✅ **CSS** : Styles responsive avec mode sombre
-- ✅ **JavaScript** : Toutes les fonctionnalités implémentées
-- ✅ **Accessibilité** : Conforme WCAG AA
-- ✅ **Performance** : Optimisé pour PageSpeed Insights
-- ✅ **Responsive** : Mobile-first, compatible tous écrans
-
----
-
-## 🔗 Liens Utiles
+## 🌐 Déploiement
 
 - **Site en production** : https://techshopbtssio.netlify.app/
-- **Repository GitHub** : https://github.com/HaGotHem/projet-techshop
-- **PageSpeed Insights** : https://pagespeed.web.dev/
-
----
-
-**Date de création** : Décembre 2024
-**Version** : 1.0
-**Statut** : Documentation finale complète
-
