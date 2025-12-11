@@ -1,6 +1,13 @@
-/* === PAGE À PROPOS === */
+/* ============================================
+   PAGE À PROPOS - style_apropos.css
+   ============================================
+   Styles spécifiques à la page à propos
+   Niveau BTS SIO 1ère Année
+   ============================================ */
 
-/* Section Introduction */
+/* ============================================
+   SECTION INTRODUCTION
+   ============================================ */
 .about-intro {
     background-color: white;
     min-height: calc(100vh - 200px);
@@ -43,19 +50,32 @@
     font-size: 2.5rem;
 }
 
-/* Timeline */
+/* ============================================
+   TIMELINE (FRISE CHRONOLOGIQUE)
+   ============================================
+   Crée une ligne verticale avec des événements positionnés
+   ============================================ */
 .timeline {
+    /* position: relative : Nécessaire pour positionner ::before en absolute */
     position: relative;
-    padding: 2rem 0;
+    padding: 2rem 0;  /* 2rem haut et bas */
 }
 
+/* ===== LIGNE VERTICALE DE LA TIMELINE ===== */
+/* ::before : Pseudo-élément qui crée la ligne verticale */
 .timeline::before {
+    /* content: '' : Obligatoire pour que ::before existe */
     content: '';
+    
+    /* Position absolue par rapport à .timeline */
     position: absolute;
-    left: 30px;
-    top: 0;
-    bottom: 0;
-    width: 3px;
+    left: 30px;  /* À 30px de la gauche */
+    top: 0;      /* Du haut */
+    bottom: 0;   /* Jusqu'en bas */
+    
+    width: 3px;  /* Largeur de 3px (ligne fine) */
+    
+    /* Dégradé vertical : du cyan au bleu */
     background: linear-gradient(to bottom, var(--accent-cyan), var(--primary-blue));
 }
 

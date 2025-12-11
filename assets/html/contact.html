@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<!-- 
+  ============================================
+  PAGE CONTACT - contact.html
+  ============================================
+  Niveau BTS SIO 1ère Année
+  Cette page contient un formulaire de contact et les informations de l'entreprise
+  ============================================
+-->
+
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
@@ -9,7 +18,7 @@
     <link rel="stylesheet" href="../css/style_contact.css" />
   </head>
   <body>
-    <!-- HEADER -->
+    <!-- HEADER (identique sur toutes les pages) -->
     <header class="header-site">
       <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
@@ -75,27 +84,82 @@
       </nav>
     </header>
 
-    <!-- MAIN CONTENT -->
+    <!-- 
+      ============================================
+      CONTENU PRINCIPAL (MAIN)
+      ============================================
+    -->
     <main>
+      <!-- 
+        ============================================
+        SECTION CONTACT
+        ============================================
+      -->
       <section class="contact-section py-5">
         <div class="container">
+          <!-- Titre principal -->
           <h1 class="text-center mb-4">Contactez-nous</h1>
+          
+          <!-- Sous-titre -->
           <p class="text-center text-muted mb-5">
-            Une question ? Un besoin particulier ? N'hésitez pas à nous
-            contacter
+            Une question ? Un besoin particulier ? N'hésitez pas à nous contacter
           </p>
 
+          <!-- 
+            ============================================
+            LIGNE PRINCIPALE
+            ============================================
+            Contient le formulaire (gauche) et les infos (droite)
+          -->
           <div class="row">
-            <!-- Formulaire de contact -->
+            <!-- 
+              ============================================
+              FORMULAIRE DE CONTACT (COLONNE GAUCHE)
+              ============================================
+              col-lg-7 : Prend 7/12 de la largeur sur grand écran (≈58%)
+              mb-4 mb-lg-0 : Marge en bas sur mobile, aucune sur desktop
+            -->
             <div class="col-lg-7 mb-4 mb-lg-0">
               <div class="contact-form-wrapper">
                 <h2 class="h4 mb-4">Envoyez-nous un message</h2>
+                
+                <!-- 
+                  ============================================
+                  FORMULAIRE HTML
+                  ============================================
+                  id="contact-form" : ID pour JavaScript
+                  novalidate : Désactive la validation HTML5 native
+                  (on fait notre propre validation en JavaScript)
+                -->
                 <form id="contact-form" novalidate>
-                  <!-- Nom complet -->
+                  
+                  <!-- 
+                    ===== CHAMP NOM COMPLET =====
+                    mb-3 : Marge en bas de 3 unités
+                  -->
                   <div class="mb-3">
-                    <label for="name" class="form-label"
-                      >Nom complet <span class="text-danger">*</span></label
-                    >
+                    <!-- 
+                      Label du champ
+                      for="name" : Lie le label au champ avec id="name"
+                      text-danger : Classe Bootstrap pour le texte rouge
+                      * : Indique que le champ est obligatoire
+                    -->
+                    <label for="name" class="form-label">
+                      Nom complet <span class="text-danger">*</span>
+                    </label>
+                    
+                    <!-- 
+                      Champ de saisie texte
+                      type="text" : Type texte
+                      class="form-control" : Style Bootstrap pour les champs
+                      id="name" : Identifiant unique (lié au label)
+                      name="name" : Nom du champ (pour l'envoi du formulaire)
+                      required : Champ obligatoire
+                      pattern="[A-Za-zÀ-ÿ\s]{2,50}" : Expression régulière
+                        - [A-Za-zÀ-ÿ\s] : Lettres (maj, min, accents) et espaces
+                        - {2,50} : Entre 2 et 50 caractères
+                      aria-describedby : Lie au message d'erreur pour l'accessibilité
+                    -->
                     <input
                       type="text"
                       class="form-control"
@@ -105,17 +169,26 @@
                       pattern="[A-Za-zÀ-ÿ\s]{2,50}"
                       aria-describedby="name-feedback"
                     />
+                    
+                    <!-- 
+                      Message d'erreur (masqué par défaut)
+                      invalid-feedback : Classe Bootstrap pour les erreurs
+                      S'affiche quand le champ a la classe "is-invalid"
+                    -->
                     <div class="invalid-feedback" id="name-feedback">
-                      Veuillez entrer un nom valide (2 à 50 caractères, lettres
-                      uniquement).
+                      Veuillez entrer un nom valide (2 à 50 caractères, lettres uniquement).
                     </div>
                   </div>
 
-                  <!-- Email -->
+                  <!-- 
+                    ===== CHAMP EMAIL =====
+                    type="email" : Type HTML5 pour email
+                    Le navigateur valide automatiquement le format email
+                  -->
                   <div class="mb-3">
-                    <label for="email" class="form-label"
-                      >Email <span class="text-danger">*</span></label
-                    >
+                    <label for="email" class="form-label">
+                      Email <span class="text-danger">*</span>
+                    </label>
                     <input
                       type="email"
                       class="form-control"
@@ -169,11 +242,17 @@
                     </div>
                   </div>
 
-                  <!-- Message -->
+                  <!-- 
+                    ===== CHAMP MESSAGE (TEXTAREA) =====
+                    textarea : Zone de texte multiligne
+                    rows="6" : Hauteur de 6 lignes
+                    minlength="10" : Minimum 10 caractères
+                    maxlength="1000" : Maximum 1000 caractères
+                  -->
                   <div class="mb-4">
-                    <label for="message" class="form-label"
-                      >Message <span class="text-danger">*</span></label
-                    >
+                    <label for="message" class="form-label">
+                      Message <span class="text-danger">*</span>
+                    </label>
                     <textarea
                       class="form-control"
                       id="message"
@@ -187,6 +266,12 @@
                     <div class="invalid-feedback" id="message-feedback">
                       Le message doit contenir entre 10 et 1000 caractères.
                     </div>
+                    
+                    <!-- 
+                      Compteur de caractères
+                      form-text text-muted : Texte d'aide en gris
+                      id="message-count" : Mis à jour par JavaScript
+                    -->
                     <small class="form-text text-muted">
                       <span id="message-count">0</span> / 1000 caractères
                     </small>

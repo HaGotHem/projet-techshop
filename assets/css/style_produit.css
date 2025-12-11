@@ -1,8 +1,20 @@
-/* === PAGE PRODUITS === */
+/* ============================================
+   PAGE PRODUITS - style_produit.css
+   ============================================
+   Styles spécifiques à la page produits
+   Niveau BTS SIO 1ère Année
+   ============================================ */
 
-/* Section Produits */
+/* ============================================
+   SECTION PRODUITS
+   ============================================ */
 .products-section {
+    /* Fond clair */
     background-color: var(--light-bg);
+    
+    /* Hauteur minimale : 100vh (hauteur de la fenêtre) moins 200px
+       calc() : fonction CSS pour faire des calculs
+       Garantit que la section prend au moins toute la hauteur visible */
     min-height: calc(100vh - 200px);
 }
 
@@ -12,11 +24,21 @@
     font-size: 2.5rem;
 }
 
-/* Sidebar Filtres */
+/* ============================================
+   SIDEBAR FILTRES
+   ============================================
+   Barre latérale avec les boutons de filtrage
+   ============================================ */
 .filters-sidebar {
     background-color: white;
+    
+    /* padding: 1.5rem : Espacement interne de 1.5rem (24px) de tous les côtés */
     padding: 1.5rem;
+    
+    /* border-radius: 12px : Coins arrondis */
     border-radius: 12px;
+    
+    /* Ombre portée pour donner de la profondeur */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -33,16 +55,28 @@
     margin-bottom: 0;
 }
 
+/* ============================================
+   BOUTONS FILTRES
+   ============================================ */
 .btn-filter {
+    /* Style de base */
     background-color: white;
     color: var(--dark-gray);
+    
+    /* border: 2px solid : Bordure de 2px, style solide */
     border: 2px solid var(--dark-gray);
+    
+    /* padding: 12px 20px : 12px haut/bas, 20px gauche/droite */
     padding: 12px 20px;
-    margin-bottom: 10px;
+    
+    margin-bottom: 10px;  /* Espacement entre les boutons */
     border-radius: 8px;
     font-weight: 500;
+    
+    /* Transition : animation fluide sur toutes les propriétés */
     transition: all 0.3s ease;
-    text-align: left;
+    
+    text-align: left;  /* Texte aligné à gauche */
 }
 
 /* Desktop : filtres en colonne dans la sidebar */
@@ -84,6 +118,8 @@
     }
 }
 
+/* ===== ÉTAT ACTIF DU BOUTON FILTRE ===== */
+/* .active : Classe ajoutée par JavaScript quand le filtre est sélectionné */
 .btn-filter.active {
     background-color: var(--primary-blue);
     color: white;
@@ -100,15 +136,30 @@
     }
 }
 
-/* Cartes Produits */
+/* ============================================
+   CARTES PRODUITS
+   ============================================
+   Style des cartes affichant chaque produit
+   ============================================ */
 .product-card {
     border: none;
     border-radius: 12px;
+    
+    /* overflow: hidden : Cache ce qui dépasse (image qui dépasse, etc.) */
     overflow: hidden;
+    
+    /* Transition avec courbe d'animation personnalisée
+       cubic-bezier : crée un effet de rebond */
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
     background-color: white;
     position: relative;
+    
+    /* État initial : invisible (pour l'animation) */
     opacity: 0;
+    
+    /* Animation : fadeInUp (apparition depuis le bas)
+       forwards : garde l'état final après l'animation */
     animation: fadeInUp 0.6s ease forwards;
 }
 
@@ -121,14 +172,18 @@
 .product-card:nth-child(7) { animation-delay: 0.7s; }
 .product-card:nth-child(8) { animation-delay: 0.8s; }
 
+/* ===== DÉFINITION DE L'ANIMATION FADEINUP ===== */
 @keyframes fadeInUp {
+    /* État initial (from) */
     from {
-        opacity: 0;
-        transform: translateY(30px);
+        opacity: 0;              /* Invisible */
+        transform: translateY(30px);  /* Décalé de 30px vers le bas */
     }
+    
+    /* État final (to) */
     to {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 1;              /* Visible */
+        transform: translateY(0);  /* Position normale */
     }
 }
 

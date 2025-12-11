@@ -1,43 +1,128 @@
 <!DOCTYPE html>
+<!-- 
+  ============================================
+  PAGE D'ACCUEIL - index.html
+  ============================================
+  Niveau BTS SIO 1ère Année
+  Cette page est la première page que voit l'utilisateur
+  ============================================
+-->
+
 <html lang="fr">
+  <!-- 
+    ============================================
+    EN-TÊTE DU DOCUMENT (HEAD)
+    ============================================
+    Contient les métadonnées et les liens vers les fichiers CSS
+  -->
   <head>
+    <!-- Encodage des caractères : UTF-8 permet d'afficher les accents et caractères spéciaux -->
     <meta charset="UTF-8" />
+
+    <!-- 
+      Viewport : Rend le site responsive (adaptatif aux écrans mobiles)
+      width=device-width : Largeur égale à la largeur de l'écran
+      initial-scale=1.0 : Zoom initial à 100%
+    -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Titre affiché dans l'onglet du navigateur -->
     <title>TechShop - Accueil</title>
+
+    <!-- 
+      Liens vers les fichiers CSS (feuilles de style)
+      Ordre important : Bootstrap d'abord, puis nos styles personnalisés
+    -->
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+    <!-- Framework CSS Bootstrap -->
     <link rel="stylesheet" href="./assets/css/style_general.css" />
+    <!-- Styles communs à toutes les pages -->
     <link rel="stylesheet" href="./assets/css/style_index.css" />
+    <!-- Styles spécifiques à cette page -->
   </head>
+
+  <!-- 
+    ============================================
+    CORPS DU DOCUMENT (BODY)
+    ============================================
+    Contient tout le contenu visible de la page
+  -->
   <body>
-    <!-- HEADER -->
+    <!-- 
+      ============================================
+      HEADER (EN-TÊTE DU SITE)
+      ============================================
+      Contient la barre de navigation avec le logo et les liens
+    -->
     <header class="header-site">
+      <!-- 
+        navbar : Classe Bootstrap pour créer une barre de navigation
+        navbar-expand-lg : Le menu s'étend sur les grands écrans (≥992px)
+        navbar-dark : Thème sombre pour la barre de navigation
+      -->
       <nav class="navbar navbar-expand-lg navbar-dark">
+        <!-- container-fluid : Conteneur qui prend toute la largeur disponible -->
         <div class="container-fluid">
-          <!-- Logo -->
+          <!-- ===== LOGO DU SITE ===== -->
+          <!-- navbar-brand : Classe Bootstrap pour le logo -->
           <a class="navbar-brand" href="index.html">
             <strong>TechShop</strong>
+            <!-- <strong> : Texte en gras (sémantique) -->
           </a>
 
-          <!-- Menu Hamburger (Mobile) -->
+          <!-- ===== MENU HAMBURGER (MOBILE) ===== -->
+          <!-- 
+            Ce bouton n'est visible que sur les petits écrans
+            Il permet d'afficher/masquer le menu de navigation
+          -->
           <button
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+            <!--
+            Attribut
+            Bootstrap
+            :
+            active
+            le
+            collapse
+            --
           >
+            data-bs-target="#navbarNav"
+            <!-- Cible l'élément à afficher/masquer -->
+            aria-controls="navbarNav"
+            <!-- Attribut d'accessibilité -->
+            aria-expanded="false"
+            <!-- État initial : menu fermé -->
+            aria-label="Toggle navigation"
+            <!-- Label pour les lecteurs d'écran -->
+            >
+            <!-- Icône hamburger (3 lignes horizontales) -->
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <!-- Liens Navigation -->
+          <!-- ===== LIENS DE NAVIGATION ===== -->
+          <!-- 
+            collapse navbar-collapse : Menu masqué par défaut sur mobile
+            S'affiche quand on clique sur le bouton hamburger
+          -->
           <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- navbar-nav : Liste des liens de navigation -->
+            <!-- ms-auto : Margin-start auto (pousse le contenu à droite) -->
             <ul class="navbar-nav ms-auto">
+              <!-- Élément de navigation -->
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html"
-                  >Accueil</a
+                <!-- 
+                  nav-link active : Lien actif (page courante)
+                  aria-current="page" : Attribut d'accessibilité
+                -->
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="index.html"
                 >
+                  Accueil
+                </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="assets/html/produit.html">Produits</a>
@@ -50,8 +135,16 @@
               </li>
             </ul>
 
-            <!-- Panier -->
+            <!-- ===== BOUTON PANIER ===== -->
+            <!-- cart-icon : Classe personnalisée pour le style -->
+            <!-- ms-3 : Marge à gauche de 3 unités Bootstrap -->
             <div class="cart-icon ms-3">
+              <!-- 
+                btn btn-outline-light : Bouton avec bordure blanche
+                position-relative : Position relative pour placer le badge
+                data-bs-toggle="modal" : Ouvre un modal Bootstrap
+                data-bs-target="#cartModal" : Cible le modal à ouvrir
+              -->
               <button
                 class="btn btn-outline-light position-relative"
                 type="button"
@@ -59,11 +152,20 @@
                 data-bs-target="#cartModal"
               >
                 <span>Panier</span>
+                <!-- 
+                  Badge compteur d'articles
+                  position-absolute : Position absolue par rapport au bouton
+                  top-0 start-100 : En haut à droite
+                  translate-middle : Centre le badge
+                  bg-danger : Fond rouge Bootstrap
+                  id="cart-count" : ID pour le mettre à jour en JavaScript
+                -->
                 <span
                   class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
                   id="cart-count"
                 >
                   0
+                  <!-- Valeur initiale, mise à jour par JavaScript -->
                 </span>
               </button>
             </div>
@@ -72,18 +174,43 @@
       </nav>
     </header>
 
-    <!-- MAIN CONTENT -->
+    <!-- 
+      ============================================
+      CONTENU PRINCIPAL (MAIN)
+      ============================================
+      Balise sémantique HTML5 pour le contenu principal
+    -->
     <main>
-      <!-- Section Hero / Promo - Carrousel -->
+      <!-- 
+        ============================================
+        SECTION HERO (CARROUSEL DE PROMOTIONS)
+        ============================================
+        Affiche les promotions principales avec un diaporama
+      -->
       <section class="hero-section">
+        <!-- 
+          carousel : Composant Bootstrap pour créer un diaporama
+          slide : Transition par glissement
+          carousel-fade : Transition en fondu (plus douce)
+          data-bs-ride="carousel" : Démarre automatiquement le carrousel
+          data-bs-interval="5000" : Change de slide toutes les 5 secondes (5000ms)
+        -->
         <div
           id="heroCarousel"
           class="carousel slide carousel-fade"
           data-bs-ride="carousel"
           data-bs-interval="5000"
         >
-          <!-- Indicateurs -->
+          <!-- 
+            ===== INDICATEURS (PETITS POINTS EN BAS) =====
+            Permettent de naviguer directement vers une slide
+          -->
           <div class="carousel-indicators">
+            <!-- 
+              Bouton pour la première slide (active par défaut)
+              data-bs-slide-to="0" : Aller à la slide numéro 0 (première)
+              active : Classe Bootstrap pour indiquer la slide active
+            -->
             <button
               type="button"
               data-bs-target="#heroCarousel"
@@ -92,12 +219,14 @@
               aria-current="true"
               aria-label="Slide 1"
             ></button>
+            <!-- Bouton pour la deuxième slide -->
             <button
               type="button"
               data-bs-target="#heroCarousel"
               data-bs-slide-to="1"
               aria-label="Slide 2"
             ></button>
+            <!-- Bouton pour la troisième slide -->
             <button
               type="button"
               data-bs-target="#heroCarousel"
@@ -106,19 +235,46 @@
             ></button>
           </div>
 
-          <!-- Slides -->
+          <!-- 
+            ===== SLIDES (IMAGES DU CARROUSEL) =====
+            Chaque slide contient du contenu promotionnel
+          -->
           <div class="carousel-inner">
-            <!-- Slide 1 -->
+            <!-- 
+              ===== SLIDE 1 : SMARTPHONES =====
+              carousel-item active : Slide visible par défaut
+            -->
             <div class="carousel-item active">
+              <!-- container : Conteneur Bootstrap qui centre le contenu -->
               <div class="container">
+                <!-- 
+                  row : Crée une ligne Bootstrap
+                  align-items-center : Aligne verticalement au centre
+                  py-5 : Padding vertical (haut et bas) de 5 unités
+                -->
                 <div class="row align-items-center py-5">
+                  <!-- 
+                    col-lg-6 : Colonne qui prend 6/12 de la largeur sur grand écran (soit 50%)
+                    Contient le texte promotionnel
+                  -->
                   <div class="col-lg-6">
+                    <!-- Badge de promotion -->
                     <div class="promo-badge mb-3">Promotion -30%</div>
+                    <!-- 
+                      display-4 : Classe Bootstrap pour un titre très grand
+                      fw-bold : Font-weight bold (texte en gras)
+                      mb-4 : Marge en bas de 4 unités
+                    -->
                     <h1 class="display-4 fw-bold mb-4">Smartphones Premium</h1>
+                    <!-- 
+                      lead : Classe Bootstrap pour un texte d'introduction plus grand
+                      mb-4 : Marge en bas de 4 unités
+                    -->
                     <p class="lead mb-4">
                       Découvrez notre sélection de smartphones dernière
                       génération avec des prix imbattables
                     </p>
+                    <!-- Bouton d'action vers la page produits -->
                     <a
                       href="assets/html/produit.html"
                       class="btn-animated btn-primary btn-lg"
@@ -126,6 +282,10 @@
                       <span>Voir les offres</span>
                     </a>
                   </div>
+                  <!-- 
+                    col-lg-6 : Colonne pour l'image
+                    Contient un placeholder (sera remplacé par une vraie image)
+                  -->
                   <div class="col-lg-6">
                     <div class="hero-image-placeholder">
                       <p class="text-center">Image Smartphone</p>
@@ -212,16 +372,44 @@
         </div>
       </section>
 
-      <!-- Section Services -->
+      <!-- 
+        ============================================
+        SECTION SERVICES
+        ============================================
+        Affiche les avantages du site (livraison, paiement, support)
+      -->
       <section class="services-section py-5 bg-light">
+        <!-- container : Centre le contenu et ajoute des marges latérales -->
         <div class="container">
+          <!-- 
+            text-center : Centre le texte
+            mb-5 : Marge en bas de 5 unités
+          -->
           <h2 class="text-center mb-5">Nos Services</h2>
+          <!-- 
+            row : Crée une ligne Bootstrap
+            g-4 : Gap (espacement) de 4 unités entre les colonnes
+          -->
           <div class="row g-4">
+            <!-- 
+              col-md-4 : Colonne qui prend 4/12 de la largeur sur écran moyen+
+              Soit 3 colonnes côte à côte (4+4+4=12)
+            -->
             <div class="col-md-4">
+              <!-- 
+                card : Composant Bootstrap pour créer une carte
+                text-center : Centre le contenu
+                h-100 : Hauteur 100% (toutes les cartes ont la même hauteur)
+                border-0 : Pas de bordure
+                shadow-sm : Ombre légère
+              -->
               <div class="card text-center h-100 border-0 shadow-sm">
                 <div class="card-body">
+                  <!-- Icône emoji pour le service -->
                   <div class="service-icon mb-3">🚚</div>
+                  <!-- h5 : Titre de niveau 5 (plus petit que h2) -->
                   <h3 class="h5">Livraison Rapide</h3>
+                  <!-- card-text : Classe Bootstrap pour le texte dans une carte -->
                   <p class="card-text">Livraison gratuite dès 50€</p>
                 </div>
               </div>
@@ -437,12 +625,23 @@
       </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- 
+      ============================================
+      SCRIPTS JAVASCRIPT
+      ============================================
+      Les scripts sont chargés à la fin du body pour ne pas bloquer l'affichage
+      Ordre important : dépendances d'abord, puis nos scripts
+    -->
+    <!-- Bootstrap JavaScript : Nécessaire pour les composants (modal, carousel, etc.) -->
     <script src="./assets/javascript/bootstrap.min.js"></script>
-    <!-- Anime.js doit être chargé avant script_index.js -->
+    <!-- Anime.js : Bibliothèque externe pour les animations (chargée depuis un CDN) -->
+    <!-- Doit être chargé avant script_index.js qui l'utilise -->
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+    <!-- Gestionnaire de panier : Doit être chargé avant les scripts qui l'utilisent -->
     <script src="./assets/javascript/cart.js"></script>
+    <!-- Scripts spécifiques à la page d'accueil -->
     <script src="./assets/javascript/script_index.js"></script>
+    <!-- Script pour le bouton retour en haut -->
     <script src="./assets/javascript/back-to-top.js"></script>
   </body>
 </html>

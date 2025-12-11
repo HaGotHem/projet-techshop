@@ -1,6 +1,13 @@
-/* === PAGE CONTACT === */
+/* ============================================
+   PAGE CONTACT - style_contact.css
+   ============================================
+   Styles spécifiques à la page contact
+   Niveau BTS SIO 1ère Année
+   ============================================ */
 
-/* Section Contact */
+/* ============================================
+   SECTION CONTACT
+   ============================================ */
 .contact-section {
     background-color: var(--light-bg);
     min-height: calc(100vh - 200px);
@@ -25,25 +32,45 @@
     font-weight: 600;
 }
 
-/* Formulaire */
+/* ============================================
+   FORMULAIRE
+   ============================================
+   Styles pour les champs du formulaire de contact
+   ============================================ */
+
+/* ===== LABELS DES CHAMPS ===== */
 .form-label {
-    font-weight: 600;
+    font-weight: 600;  /* Demi-gras */
     color: var(--dark-gray);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem;  /* Espacement sous le label */
 }
 
+/* ===== CHAMPS DE SAISIE (INPUT ET SELECT) ===== */
 .form-control,
 .form-select {
+    /* Bordure grise claire */
     border: 2px solid #e2e8f0;
     border-radius: 8px;
-    padding: 12px 16px;
+    padding: 12px 16px;  /* Espacement interne */
+    
+    /* Transition pour animation fluide */
     transition: all 0.3s ease;
 }
 
+/* ===== ÉTAT FOCUS (QUAND ON CLIQUE DANS LE CHAMP) ===== */
 .form-control:focus,
 .form-select:focus {
+    /* :focus : pseudo-classe activée quand le champ a le focus */
+    
+    /* Bordure cyan */
     border-color: var(--accent-cyan);
+    
+    /* Ombre autour du champ (effet de "glow")
+       box-shadow: offset-x offset-y blur-radius spread-radius couleur
+       0 0 0 0.2rem = ombre sans décalage, flou 0, étalement 0.2rem */
     box-shadow: 0 0 0 0.2rem rgba(6, 182, 212, 0.25);
+    
+    /* outline: none : Supprime le contour par défaut du navigateur */
     outline: none;
 }
 

@@ -1,9 +1,30 @@
-/* === HERO SECTION / CARROUSEL === */
-/* Styles de base pour mobile (mobile-first) */
+/* ============================================
+   PAGE D'ACCUEIL - style_index.css
+   ============================================
+   Styles spécifiques à la page d'accueil
+   Niveau BTS SIO 1ère Année
+   ============================================ */
+
+/* ============================================
+   SECTION HERO (CARROUSEL DE PROMOTIONS)
+   ============================================
+   Approche mobile-first : styles de base pour mobile,
+   puis amélioration pour les grands écrans
+   ============================================ */
 .hero-section {
+    /* Dégradé de couleur : du bleu au cyan
+       linear-gradient : crée un dégradé linéaire
+       135deg : angle de 135 degrés (diagonal)
+       0% : commence avec primary-blue
+       100% : finit avec accent-cyan */
     background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-cyan) 100%);
+    
     color: white;
+    
+    /* Hauteur minimale : 500px sur mobile */
     min-height: 500px;
+    
+    /* position: relative : permet de positionner les enfants en absolute */
     position: relative;
 }
 
@@ -64,53 +85,101 @@
     margin-top: 20px;
 }
 
-/* Badge de promotion */
+/* ============================================
+   BADGE DE PROMOTION
+   ============================================
+   Badge animé qui pulse pour attirer l'attention
+   ============================================ */
 .promo-badge {
+    /* display: inline-block : permet d'avoir width/height tout en restant inline */
     display: inline-block;
+    
     background-color: var(--accent-orange);
     color: white;
-    padding: 8px 20px;
+    padding: 8px 20px;  /* 8px haut/bas, 20px gauche/droite */
+    
+    /* border-radius: 20px : coins très arrondis (forme de pilule) */
     border-radius: 20px;
+    
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.9rem;  /* 90% de la taille de base */
+    
+    /* text-transform: uppercase : met tout en majuscules */
     text-transform: uppercase;
+    
+    /* letter-spacing : espacement entre les lettres (1px) */
     letter-spacing: 1px;
+    
+    /* Animation : pulse pendant 2 secondes, en boucle infinie */
     animation: pulse 2s infinite;
 }
 
+/* ===== DÉFINITION DE L'ANIMATION PULSE ===== */
+/* @keyframes : définit une animation personnalisée */
 @keyframes pulse {
+    /* 0% et 100% : état initial et final (même taille) */
     0%, 100% {
-        transform: scale(1);
+        transform: scale(1);  /* Taille normale */
     }
+    
+    /* 50% : au milieu de l'animation (agrandi) */
     50% {
-        transform: scale(1.05);
+        transform: scale(1.05);  /* Agrandi de 5% */
     }
 }
 
-/* Bouton animé inspiré de uiverse.io */
+/* ============================================
+   BOUTON ANIMÉ
+   ============================================
+   Effet de vague qui se propage au survol
+   Utilise ::before (pseudo-élément) pour créer l'animation
+   ============================================ */
 .btn-animated {
+    /* position: relative : nécessaire pour positionner ::before en absolute */
     position: relative;
+    
+    /* overflow: hidden : cache ce qui dépasse (la vague) */
     overflow: hidden;
+    
     transition: all 0.3s ease;
     border: none;
-    z-index: 1;
+    z-index: 1;  /* Au-dessus de ::before */
 }
 
+/* ===== PSEUDO-ÉLÉMENT ::before ===== */
+/* ::before : crée un élément virtuel AVANT le contenu du bouton */
 .btn-animated::before {
+    /* content: '' : obligatoire pour que ::before existe (même si vide) */
     content: '';
+    
+    /* Position absolue par rapport au bouton */
     position: absolute;
     top: 50%;
     left: 50%;
+    
+    /* Taille initiale : 0 (invisible) */
     width: 0;
     height: 0;
+    
+    /* Forme circulaire */
     border-radius: 50%;
+    
+    /* Fond blanc semi-transparent */
     background: rgba(255, 255, 255, 0.3);
+    
+    /* Centre le cercle : translate(-50%, -50%) décale de moitié de sa taille */
     transform: translate(-50%, -50%);
+    
+    /* Transition sur la taille */
     transition: width 0.6s, height 0.6s;
+    
+    /* z-index: -1 : derrière le texte du bouton */
     z-index: -1;
 }
 
+/* ===== ANIMATION AU SURVOL ===== */
 .btn-animated:hover::before {
+    /* Le cercle grandit pour créer l'effet de vague */
     width: 300px;
     height: 300px;
 }

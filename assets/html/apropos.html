@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<!-- 
+  ============================================
+  PAGE À PROPOS - apropos.html
+  ============================================
+  Niveau BTS SIO 1ère Année
+  Cette page présente l'entreprise, son histoire, son équipe et ses valeurs
+  ============================================
+-->
+
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
@@ -9,7 +18,7 @@
     <link rel="stylesheet" href="../css/style_apropos.css" />
   </head>
   <body>
-    <!-- HEADER -->
+    <!-- HEADER (identique sur toutes les pages) -->
     <header class="header-site">
       <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
@@ -75,22 +84,50 @@
       </nav>
     </header>
 
-    <!-- MAIN CONTENT -->
+    <!-- 
+      ============================================
+      CONTENU PRINCIPAL (MAIN)
+      ============================================
+    -->
     <main>
-      <!-- Section Introduction -->
+      <!-- 
+        ============================================
+        SECTION INTRODUCTION
+        ============================================
+        Présente l'entreprise et sa mission
+      -->
       <section class="about-intro py-5">
         <div class="container">
           <h1 class="text-center mb-5">À propos de TechShop</h1>
+          
+          <!-- 
+            Ligne avec image et texte côte à côte
+            align-items-center : Aligne verticalement au centre
+          -->
           <div class="row align-items-center">
+            <!-- Colonne image (gauche) -->
             <div class="col-lg-6 mb-4 mb-lg-0">
+              <!-- 
+                Image responsive
+                img-fluid : S'adapte à la largeur du conteneur
+                rounded : Coins arrondis
+                shadow : Ombre portée
+              -->
               <img
                 src="https://placehold.co/600x400/1E3A8A/FFFFFF?text=Équipe+TechShop"
                 alt="Équipe TechShop"
                 class="img-fluid rounded shadow"
               />
             </div>
+            
+            <!-- Colonne texte (droite) -->
             <div class="col-lg-6">
               <h2 class="mb-4">Notre Mission</h2>
+              
+              <!-- 
+                lead : Classe Bootstrap pour un texte d'introduction plus grand
+                mb-4 : Marge en bas de 4 unités
+              -->
               <p class="lead mb-4">
                 Rendre la technologie accessible à tous en proposant les
                 meilleurs produits aux meilleurs prix, avec un service client
@@ -113,16 +150,41 @@
         </div>
       </section>
 
-      <!-- Section Histoire -->
+      <!-- 
+        ============================================
+        SECTION HISTOIRE (TIMELINE)
+        ============================================
+        Frise chronologique de l'histoire de l'entreprise
+        bg-light : Fond clair
+      -->
       <section class="history-section py-5 bg-light">
         <div class="container">
           <h2 class="text-center mb-5">Notre Histoire</h2>
+          
+          <!-- 
+            justify-content-center : Centre la colonne horizontalement
+          -->
           <div class="row justify-content-center">
+            <!-- 
+              col-lg-8 : Colonne de 8/12 sur grand écran (66%)
+              Limite la largeur pour une meilleure lisibilité
+            -->
             <div class="col-lg-8">
+              <!-- 
+                timeline : Conteneur de la frise chronologique
+                Structure personnalisée avec CSS
+              -->
               <div class="timeline">
-                <!-- Étape 1 -->
+                
+                <!-- 
+                  ===== ÉTAPE 1 : 2020 =====
+                  timeline-item : Chaque événement de l'histoire
+                -->
                 <div class="timeline-item">
+                  <!-- Année affichée dans un cercle -->
                   <div class="timeline-year">2020</div>
+                  
+                  <!-- Contenu descriptif de l'événement -->
                   <div class="timeline-content">
                     <h3>Les Débuts</h3>
                     <p>
