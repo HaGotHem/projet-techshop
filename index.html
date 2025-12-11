@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechShop - Accueil</title>
 
+    <!-- Preconnect pour les ressources externes -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    
+    <!-- Preload des CSS critiques -->
+    <link rel="preload" href="./assets/css/bootstrap.min.css" as="style" />
+    <link rel="preload" href="./assets/css/style_general.css" as="style" />
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./assets/css/style_general.css" />
     <link rel="stylesheet" href="./assets/css/style_index.css" />
@@ -134,7 +142,7 @@
                     >
                   </div>
                   <div class="col-lg-6">
-                    <img src="./assets/src/hero/smartphone.webp" alt="Smartphones Premium" class="img-fluid rounded shadow">
+                    <img src="./assets/src/hero/smartphone.webp" alt="Smartphones Premium" class="img-fluid rounded shadow" loading="eager" fetchpriority="high" width="600" height="400">
                   </div>
                 </div>
               </div>
@@ -159,7 +167,7 @@
                     </a>
                   </div>
                   <div class="col-lg-6">
-                    <img src="./assets/src/hero/laptop.webp" alt="Laptop Gaming" class="img-fluid rounded shadow">
+                    <img src="./assets/src/hero/laptop.webp" alt="Laptop Gaming" class="img-fluid rounded shadow" loading="lazy" width="600" height="400">
                   </div>
                 </div>
               </div>
@@ -184,7 +192,7 @@
                     </a>
                   </div>
                   <div class="col-lg-6">
-                    <img src="./assets/src/hero/accessories.webp" alt="Accessoires Tech" class="img-fluid rounded shadow">
+                    <img src="./assets/src/hero/accessories.webp" alt="Accessoires Tech" class="img-fluid rounded shadow" loading="lazy" width="600" height="400">
                   </div>
                 </div>
               </div>
@@ -257,7 +265,7 @@
             <div class="col-md-6 col-lg-3">
               <a href="assets/html/produit.html" class="product-featured-link">
                 <div class="collage-item">
-                  <img src="./assets/src/products/watch.webp" alt="Montre connectée" class="img-fluid rounded shadow">
+                  <img src="./assets/src/products/watch.webp" alt="Montre connectée" class="img-fluid rounded shadow" loading="lazy" width="300" height="300">
                   <div class="product-overlay">
                     <div class="product-info">
                       <h3>Montre Connectée</h3>
@@ -270,7 +278,7 @@
             <div class="col-md-6 col-lg-3">
               <a href="assets/html/produit.html" class="product-featured-link">
                 <div class="collage-item">
-                  <img src="./assets/src/products/headphones.webp" alt="Casque audio premium" class="img-fluid rounded shadow">
+                  <img src="./assets/src/products/headphones.webp" alt="Casque audio premium" class="img-fluid rounded shadow" loading="lazy" width="300" height="300">
                   <div class="product-overlay">
                     <div class="product-info">
                       <h3>Casque Audio Premium</h3>
@@ -283,7 +291,7 @@
             <div class="col-md-6 col-lg-3">
               <a href="assets/html/produit.html" class="product-featured-link">
                 <div class="collage-item">
-                  <img src="./assets/src/products/tablet.webp" alt="Tablette tactile" class="img-fluid rounded shadow">
+                  <img src="./assets/src/products/tablet.webp" alt="Tablette tactile" class="img-fluid rounded shadow" loading="lazy" width="300" height="300">
                   <div class="product-overlay">
                     <div class="product-info">
                       <h3>Tablette Tactile</h3>
@@ -296,7 +304,7 @@
             <div class="col-md-6 col-lg-3">
               <a href="assets/html/produit.html" class="product-featured-link">
                 <div class="collage-item">
-                  <img src="./assets/src/products/keyboard.webp" alt="Clavier mécanique" class="img-fluid rounded shadow">
+                  <img src="./assets/src/products/keyboard.webp" alt="Clavier mécanique" class="img-fluid rounded shadow" loading="lazy" width="300" height="300">
                   <div class="product-overlay">
                     <div class="product-info">
                       <h3>Clavier Mécanique</h3>
@@ -514,17 +522,17 @@
     </footer>
 
     <!-- javascript -->
-    <!-- Bootstrap -->
-    <script src="./assets/javascript/bootstrap.min.js"></script>
-    <!-- Anime.js -->
-    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
-    <!-- Gestionnaire de thème -->
-    <script src="./assets/javascript/theme-toggle.js"></script>
-    <!-- Gestionnaire de panie -->
-    <script src="./assets/javascript/cart.js"></script>
+    <!-- Bootstrap - chargé en premier car nécessaire pour l'interactivité -->
+    <script src="./assets/javascript/bootstrap.min.js" defer></script>
+    <!-- Gestionnaire de thème - chargé tôt pour éviter le flash -->
+    <script src="./assets/javascript/theme-toggle.js" defer></script>
+    <!-- Gestionnaire de panier -->
+    <script src="./assets/javascript/cart.js" defer></script>
     <!-- Scripts spécifiques à la page d'accueil -->
-    <script src="./assets/javascript/script_index.js"></script>
+    <script src="./assets/javascript/script_index.js" defer></script>
     <!-- Script pour le bouton retour en haut -->
-    <script src="./assets/javascript/back-to-top.js"></script>
+    <script src="./assets/javascript/back-to-top.js" defer></script>
+    <!-- Anime.js - chargé en dernier car non critique -->
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js" defer></script>
   </body>
 </html>

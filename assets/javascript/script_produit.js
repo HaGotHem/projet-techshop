@@ -3,6 +3,15 @@
    ======================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Ajouter lazy loading aux images qui n'en ont pas
+    const images = document.querySelectorAll('img:not([loading])');
+    images.forEach(img => {
+        // Ne pas ajouter lazy loading aux images au-dessus de la ligne de flottaison
+        if (!img.hasAttribute('loading')) {
+            img.loading = 'lazy';
+        }
+    });
+    
     setTimeout(() => {
         initProductFilters();
         initAddToCartButtons();

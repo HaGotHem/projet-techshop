@@ -24,6 +24,10 @@
     <!-- Titre de la page -->
     <title>TechShop - Produits</title>
     
+    <!-- Preload des CSS critiques -->
+    <link rel="preload" href="../css/bootstrap.min.css" as="style" />
+    <link rel="preload" href="../css/style_general.css" as="style" />
+    
     <!-- 
       Liens vers les fichiers CSS
       Note : ../ remonte d'un niveau dans l'arborescence
@@ -300,7 +304,10 @@
                                     -->
                                     <img src="../src/products/smartphone-pro.webp" 
                                          class="card-img-top" 
-                                         alt="Smartphone Pro">
+                                         alt="Smartphone Pro"
+                                         loading="lazy"
+                                         width="300"
+                                         height="250">
                                     
                                     <!-- 
                                       Corps de la carte
@@ -904,10 +911,10 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="../javascript/bootstrap.min.js"></script>
-    <script src="../javascript/theme-toggle.js"></script>
-    <script src="../javascript/cart.js"></script>
-    <script src="../javascript/script_produit.js"></script>
-    <script src="../javascript/back-to-top.js"></script>
+    <script src="../javascript/bootstrap.min.js" defer></script>
+    <script src="../javascript/theme-toggle.js" defer></script>
+    <script src="../javascript/cart.js" defer></script>
+    <script src="../javascript/script_produit.js" defer></script>
+    <script src="../javascript/back-to-top.js" defer></script>
 </body>
 </html>

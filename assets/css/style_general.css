@@ -48,11 +48,13 @@
 @font-face {
   font-family: "Inter";
   src: url("../fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+  font-display: swap; /* Optimisation pour le chargement des polices */
 }
 
 @font-face {
   font-family: "JetBrains Mono";
   src: url("../fonts/JetBrainsMono-VariableFont_wght.ttf") format("truetype");
+  font-display: swap; /* Optimisation pour le chargement des polices */
 }
 
 /* Reset */
