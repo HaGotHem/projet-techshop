@@ -60,7 +60,7 @@
     border: 2px solid var(--border-color);
     padding: 12px 20px;
     margin-bottom: 10px;
-    border-radius: 8px;
+    border-radius: 0;
     font-weight: 500;
     transition: all 0.3s ease;
     text-align: left;
@@ -76,7 +76,7 @@
 @media (max-width: 991px) {
     .btn-filter {
         margin: 5px;
-        border-radius: 25px;
+        border-radius: 0;
         text-align: center;
         display: inline-block;
     }
