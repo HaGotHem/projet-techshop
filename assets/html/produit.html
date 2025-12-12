@@ -3,15 +3,12 @@
   ============================================
   PAGE PRODUITS - produit.html
   ============================================
-  Niveau BTS SIO 1ère Année
-  Cette page affiche tous les produits avec un système de filtres
-  ============================================
 -->
 
 <html lang="fr">
   <!-- 
     ============================================
-    EN-TÊTE DU DOCUMENT (HEAD)
+    EN-TÊTE DU DOCUMENT
     ============================================
   -->
   <head>
@@ -30,8 +27,6 @@
     
     <!-- 
       Liens vers les fichiers CSS
-      Note : ../ remonte d'un niveau dans l'arborescence
-      (produit.html est dans assets/html/, les CSS sont dans assets/css/)
     -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style_general.css">
@@ -41,9 +36,8 @@
   <body>
     <!-- 
       ============================================
-      HEADER (EN-TÊTE DU SITE)
+      HEADER
       ============================================
-      Identique sur toutes les pages pour la cohérence
     -->
     <header class="header-site">
         <nav class="navbar navbar-expand-lg navbar-dark">
@@ -117,39 +111,27 @@
           ============================================
           SECTION PRODUITS
           ============================================
-          py-5 : Padding vertical de 5 unités (haut et bas)
         -->
         <section class="products-section py-5">
-            <!-- container : Centre le contenu et ajoute des marges -->
             <div class="container">
-                <!-- Titre principal de la page -->
                 <h1 class="text-center mb-4">Nos Produits</h1>
-                
-                <!-- Sous-titre descriptif -->
                 <p class="text-center text-muted mb-5">
                     Découvrez notre sélection de produits technologiques de qualité
                 </p>
 
                 <!-- 
                   ============================================
-                  LIGNE PRINCIPALE (ROW)
+                  LIGNE PRINCIPALE
                   ============================================
-                  Contient la sidebar filtres et la grille de produits
                 -->
                 <div class="row">
                     <!-- 
                       ============================================
-                      SIDEBAR FILTRES (COLONNE GAUCHE)
+                      SIDEBAR FILTRES
                       ============================================
-                      col-lg-3 : Prend 3/12 de la largeur sur grand écran (25%)
-                      mb-4 mb-lg-0 : Marge en bas sur mobile, aucune sur desktop
                     -->
                     <div class="col-lg-3 mb-4 mb-lg-0">
                         <div class="filters-sidebar">
-                            <!-- 
-                              Titre des filtres
-                              d-none d-lg-block : Masqué sur mobile, visible sur desktop
-                            -->
                             <h2 class="h5 mb-3 d-none d-lg-block">Filtres</h2>
                             
                             <div class="filters">
@@ -260,89 +242,27 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- 
-                      ============================================
-                      GRILLE DE PRODUITS (COLONNE DROITE)
-                      ============================================
-                      col-lg-9 : Prend 9/12 de la largeur sur grand écran (75%)
-                    -->
                     <div class="col-lg-9">
-                        <!-- 
-                          Ligne pour la grille de produits
-                          g-4 : Gap (espacement) de 4 unités entre les colonnes
-                          id="products-grid" : ID pour JavaScript si nécessaire
-                        -->
                         <div class="row g-4" id="products-grid">
-                            
-                            <!-- 
-                              ============================================
-                              PRODUIT 1 - SMARTPHONE
-                              ============================================
-                              col-sm-6 : 2 colonnes sur petit écran (6/12)
-                              col-md-4 : 3 colonnes sur écran moyen (4/12)
-                              col-lg-3 : 4 colonnes sur grand écran (3/12)
-                              data-category : Attribut pour le filtrage JavaScript
-                            -->
                             <div class="col-sm-6 col-md-4 col-lg-3 product-item" 
                                  data-category="smartphone">
-                                
-                                <!-- 
-                                  article : Balise sémantique HTML5 pour un contenu autonome
-                                  card product-card : Classes Bootstrap + personnalisée
-                                  h-100 : Hauteur 100% (toutes les cartes ont la même hauteur)
-                                -->
                                 <article class="card product-card h-100">
-                                    
-                                    <!-- Badge de promotion -->
                                     <span class="badge badge-promo">Promo -20%</span>
-                                    
-                                    <!-- 
-                                      Image du produit
-                                      card-img-top : Image en haut de la carte Bootstrap
-                                      alt : Texte alternatif pour l'accessibilité
-                                    -->
                                     <img src="../src/products/smartphone-pro.webp" 
                                          class="card-img-top" 
                                          alt="Smartphone Pro"
                                          loading="lazy"
                                          width="300"
                                          height="250">
-                                    
-                                    <!-- 
-                                      Corps de la carte
-                                      d-flex flex-column : Flexbox vertical
-                                      Permet de pousser le bouton en bas avec mt-auto
-                                    -->
                                     <div class="card-body d-flex flex-column">
-                                        <!-- Titre du produit -->
                                         <h3 class="card-title h5">Smartphone Pro</h3>
-                                        
-                                        <!-- Description du produit -->
                                         <p class="card-text text-muted small">
                                             Écran 6.7", 128GB, Appareil photo 48MP
                                         </p>
-                                        
-                                        <!-- 
-                                          Conteneur des prix
-                                          mb-3 : Marge en bas de 3 unités
-                                        -->
                                         <div class="price-container mb-3">
-                                            <!-- Prix actuel (en gras) -->
                                             <span class="price-current">799€</span>
-                                            
-                                            <!-- Prix barré (ancien prix) -->
                                             <span class="price-old">999€</span>
                                         </div>
-                                        
-                                        <!-- 
-                                          Bouton "Ajouter au panier"
-                                          mt-auto : Marge-top automatique (pousse en bas)
-                                          data-* : Attributs pour JavaScript
-                                            - data-id : Identifiant unique du produit
-                                            - data-name : Nom du produit
-                                            - data-price : Prix du produit
-                                        -->
                                         <button class="btn btn-primary add-to-cart mt-auto" 
                                                 data-id="1" 
                                                 data-name="Smartphone Pro" 

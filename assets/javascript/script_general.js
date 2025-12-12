@@ -1,11 +1,7 @@
 /* ========================================
    SCRIPTS GLOBAUX - TechShop
    ========================================
-   Contient :
-   - Gestionnaire de thème (mode clair/sombre)
-   - Système de panier
-   - Bouton retour en haut
-   ======================================== */
+ */
 
 (function() {
     'use strict';
@@ -103,7 +99,6 @@
         if (window.matchMedia) {
             const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
             mediaQuery.addEventListener('change', (e) => {
-                // Ne changer que si l'utilisateur n'a pas de préférence sauvegardée
                 if (!localStorage.getItem('theme')) {
                     setTheme(e.matches ? 'dark' : 'light');
                 }
